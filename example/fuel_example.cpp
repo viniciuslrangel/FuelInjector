@@ -7,6 +7,8 @@
 
 using std::string_literals::operator ""s;
 
+FuelInjector *injector;
+
 int main(int argc, char *argv[]) {
   std::string title;
   DWORD       pid = 0;
@@ -20,7 +22,7 @@ int main(int argc, char *argv[]) {
     if (titleArg == arg) {
       title = next;
     } else if (pidArg == arg) {
-      auto pidStr = std::string(arg);
+      auto pidStr = std::string(next);
       if (pidStr.rfind("0x", 0) == 0) {
         pid = std::stoi(pidStr.substr(2), nullptr, 16);
       } else {
@@ -29,19 +31,38 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  if(title.empty() && pid == 0) {
-    std::cerr << "No argument: " << argv[0] << " [title WindowName] [pid 123] [pid 0x123]" << std::endl;
+  if (title.empty() && pid == 0) {
+    std::cerr << "Help: " << argv[0] << " [-title WindowName] [-pid 123] [-pid 0x123]" << std::endl;
     return 1;
   }
 
-  if(!title.empty()) {
+  if (!title.empty()) {
     HWND hwnd = FindWindowA(nullptr, title.c_str());
-    if(hwnd != nullptr) {
+    if (hwnd != nullptr) {
       GetWindowThreadProcessId(hwnd, &pid);
     }
   }
 
-  FuelInjector injector(pid);
-  injector.Bind();
+  SetConsoleCtrlHandler([](DWORD signal) -> BOOL {
+    if(signal == CTRL_C_EVENT) {
+      delete injector;
+      exit(0);
+    }
+    return true;
+  }, true);
 
+  injector = new FuelInjector(pid);
+  injector->Bind();
+
+  while (true) {
+    static std::string line;
+    line.clear();
+    std::getline(std::cin, line);
+    if (line == "\\exit") {
+      break;
+    }
+    line.append("\n");
+    injector->Send(line.c_str(), line.size());
+  }
+  delete injector;
 }
