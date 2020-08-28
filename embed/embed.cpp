@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
 
   unsigned count = 0, data;
   while (data = in.get(), in.good()) {
-    out << '\\' << '0' << 'x' << h[data >> 4u & 0x0F] << h[data >> 0u & 0x0F];
+    out << '\\' << 'x' << h[data >> 4u & 0x0F] << h[data >> 0u & 0x0F];
     count++;
     if (count % 100 == 0) {
       out << "\"\n\"";
