@@ -33,7 +33,7 @@ DWORD WINAPI MainThread(LPVOID) {
       data.resize(SendMessage(hwnd, WM_GETTEXTLENGTH, 0, 0) + 1);
       SendMessage(hwnd, WM_GETTEXT, data.size(), reinterpret_cast<LPARAM>(data.data()));
       data.pop_back();
-      data.append(buffer);
+      data.append(buffer, count);
       SendMessage(hwnd, WM_SETTEXT, data.size(), reinterpret_cast<LPARAM>(data.data()));
     }
   }

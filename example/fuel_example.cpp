@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <future>
 
 #include <Windows.h>
 
@@ -43,6 +44,11 @@ int main(int argc, char *argv[]) {
     }
   }
 
+  if(pid == 0) {
+    std::cerr << "Could not find process";
+    return 2;
+  }
+
   SetConsoleCtrlHandler([](DWORD signal) -> BOOL {
     if(signal == CTRL_C_EVENT) {
       delete injector;
@@ -52,7 +58,10 @@ int main(int argc, char *argv[]) {
   }, true);
 
   injector = new FuelInjector(pid);
-  injector->Bind();
+  if(!injector->Bind()) {
+    std::cerr << "Could not bind!";
+    return 3;
+  }
 
   while (true) {
     static std::string line;
