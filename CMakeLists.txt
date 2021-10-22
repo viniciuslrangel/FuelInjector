@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 project(FuelInjector CXX)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 option(FUEL_EXAMPLE_PROJECT "" FALSE)
 
@@ -32,3 +32,8 @@ add_custom_command(
         DEPENDS Embed Injectable
         USES_TERMINAL
 )
+
+set(POLYHOOK_DLL OFF CACHE BOOL "")
+set(POLYHOOK_DISASM_CAPSTONE OFF CACHE BOOL "")
+set(POLYHOOK_FEATURE_INLINENTD OFF CACHE BOOL "")
+add_subdirectory(PolyHook_2_0)

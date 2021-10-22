@@ -4,6 +4,8 @@
 
 static const char *template1 = R"(#include "injectable.hpp"
 
+namespace Fuel {
+
 namespace Injectable {
 
 const char *data = // NOLINTNEXTLINE(bugprone-string-literal-with-embedded-nul)
@@ -11,7 +13,7 @@ const char *data = // NOLINTNEXTLINE(bugprone-string-literal-with-embedded-nul)
 
 static const char *template2 = "\";\n\nconst size_t size = ";
 
-static const char *template3 = ";\n}\n";
+static const char *template3 = ";\n}\n\n}\n";
 
 int main(int argc, char *argv[]) {
   if (argc < 3) {
