@@ -7,10 +7,10 @@
 
 #include <fstream>
 #include <functional>
-#include <string>
+#include <string_view>
 #include <vector>
 
-static const std::string dllName = "fuel.dll";
+static const std::string_view dllName = "fuel.dll";
 
 static const std::string &getDllPath() {
   static bool        flag = true;
@@ -56,14 +56,16 @@ public:
   }
 };
 
-FuelInjector::FuelInjector(DWORD pid) : pid(pid) {
+namespace Fuel {
+
+Injector::Injector(DWORD pid) : pid(pid), opened(false) {
 }
 
-FuelInjector::~FuelInjector() {
+Injector::~Injector() {
   Unbind();
 }
 
-bool FuelInjector::Bind() {
+bool Injector::Bind() {
   if (pHandle != nullptr) {
     return false;
   }
@@ -98,7 +100,7 @@ bool FuelInjector::Bind() {
       std::vector<HMODULE> modules;
       modules.resize(requiredSize / sizeof(HMODULE));
       EnumProcessModules(pHandle, modules.data(), requiredSize, &requiredSize);
-      for (HMODULE &mod : modules) {
+      for (HMODULE &mod: modules) {
         char name[255];
         GetModuleBaseNameA(pHandle, mod, name, 255);
         if (dllName == name) {
@@ -144,10 +146,13 @@ bool FuelInjector::Bind() {
 
   ResumeThread(remoteThread);
 
+  opened = true;
+
   return true;
 }
 
-void FuelInjector::Unbind() {
+void Injector::Unbind() {
+  opened = false;
   if (pHandle == nullptr) {
     return;
   }
@@ -160,7 +165,36 @@ void FuelInjector::Unbind() {
   pHandle = nullptr;
 }
 
-void FuelInjector::Send(const char* data, size_t size) {
+bool Injector::IsOpen() const {
+  return opened;
+}
+
+Injector::operator bool() const {
+  return opened;
+}
+
+void Injector::Send(const char *data, size_t size) {
   DWORD w;
-  WriteFile(wPipe, data, size, &w, nullptr);
+  bool  ret = WriteFile(wPipe, data, size, &w, nullptr);
+  if (!ret && GetLastError() != ERROR_IO_PENDING) {
+    opened = false;
+    Unbind();
+  }
+}
+
+size_t Injector::Read(char *output, size_t maxSize, DWORD &err) {
+  DWORD read;
+  if (!ReadFile(rPipe, output, maxSize, &read, nullptr)) {
+    DWORD lastErr = GetLastError();
+    if (lastErr != ERROR_IO_PENDING) {
+      err    = lastErr;
+      opened = false;
+      Unbind();
+      return -1;
+    }
+  }
+  err = 0;
+  return read;
+}
+
 }

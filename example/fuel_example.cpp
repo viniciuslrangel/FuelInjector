@@ -8,7 +8,7 @@
 
 using std::string_literals::operator ""s;
 
-FuelInjector *injector;
+Fuel::Injector injector;
 
 int main(int argc, char *argv[]) {
   std::string title;
@@ -44,26 +44,40 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  if(pid == 0) {
+  if (pid == 0) {
     std::cerr << "Could not find process";
     return 2;
   }
 
+  injector = Fuel::Injector(pid);
+
   SetConsoleCtrlHandler([](DWORD signal) -> BOOL {
-    if(signal == CTRL_C_EVENT) {
-      delete injector;
+    if (signal == CTRL_C_EVENT) {
+      injector.Unbind();
       exit(0);
     }
     return true;
   }, true);
 
-  injector = new FuelInjector(pid);
-  if(!injector->Bind()) {
+  if (!injector.Bind()) {
     std::cerr << "Could not bind!";
     return 3;
   }
 
-  while (true) {
+  std::thread th([]() {
+    char  buffer[128];
+    DWORD err;
+    while (injector) {
+      size_t count = injector.Read(buffer, 128, err);
+      if (err != 0) {
+        std::cout << "Disconnected!" << std::endl;
+        exit(0);
+      }
+      std::cout.write(buffer, count).flush();
+    }
+  });
+
+  while (injector) {
     static std::string line;
     line.clear();
     std::getline(std::cin, line);
@@ -71,7 +85,7 @@ int main(int argc, char *argv[]) {
       break;
     }
     line.append("\n");
-    injector->Send(line.c_str(), line.size());
+    injector.Send(line.c_str(), line.size());
   }
-  delete injector;
+  exit(0);
 }

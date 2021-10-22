@@ -8,23 +8,37 @@ typedef void *HINTANCE;
 typedef void *HMODULE;
 #endif
 
-class FuelInjector {
+namespace Fuel {
+
+class Injector {
   DWORD   pid;
   HANDLE  remoteThread{}, pHandle{};
   HANDLE  rPipe{}, wPipe{};
   HMODULE module{};
 
+  bool opened;
+
   struct {
     HANDLE rPipe{}, wPipe{};
-  }       remote{};
+  }    remote{};
 public:
-  explicit FuelInjector(DWORD pid);
+  explicit Injector() : Injector(0) {}
 
-  ~FuelInjector();
+  explicit Injector(DWORD pid);
+
+  ~Injector();
 
   bool Bind();
 
   void Unbind();
 
+  bool IsOpen() const;
+
+  operator bool() const;
+
   void Send(const char *data, size_t size);
+
+  size_t Read(char *output, size_t maxSize, DWORD &err);
 };
+
+}
