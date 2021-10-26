@@ -4,12 +4,12 @@
 
 #include <polyhook2/ZydisDisassembler.hpp>
 
-#if defined(__x86_64__)
+#if defined(__x86_64__) || defined(_WIN64)
 #define ARCH(_32, _64) _64
 
 #include <polyhook2/Detour/x64Detour.hpp>
 
-#elif defined(__i386__)
+#elif defined(__i386__) || defined(_WIN32)
 #define ARCH(_32, _64) _32
 
 #include <polyhook2/Detour/x86Detour.hpp>
