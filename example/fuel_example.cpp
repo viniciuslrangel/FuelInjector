@@ -8,22 +8,28 @@
 
 using std::string_literals::operator ""s;
 
-Fuel::Injector injector;
+static Fuel::Injector injector;
 
 int main(int argc, char *argv[]) {
   std::string title;
   DWORD       pid = 0;
 
-  for (int i = 1; i < argc - 1; i++) {
+  for (int i = 1; i < argc; i++) {
     static const auto titleArg = "-title"s;
     static const auto pidArg   = "-pid"s;
 
     auto arg  = argv[i];
     auto next = argv[i + 1];
-    if (titleArg == arg) {
+    if (titleArg == arg && i < argc - 1) {
       title = next;
     } else if (pidArg == arg) {
-      auto pidStr = std::string(next);
+      std::string pidStr;
+      if (i == argc - 1 || next[0] == '-') {
+        std::cerr << "Pid: " << std::flush;
+        std::cin >> pidStr;
+      } else {
+        pidStr = std::string(next);
+      }
       if (pidStr.rfind("0x", 0) == 0) {
         pid = std::stoi(pidStr.substr(2), nullptr, 16);
       } else {
@@ -81,6 +87,9 @@ int main(int argc, char *argv[]) {
     static std::string line;
     line.clear();
     std::getline(std::cin, line);
+    if (line.empty()) {
+      continue;
+    }
     if (line == "\\exit") {
       break;
     }
