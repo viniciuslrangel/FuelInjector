@@ -43,11 +43,32 @@ public:
 
 #define CONCAT(x, y) x##y
 #define CONCAT2(x, y) CONCAT(x, y)
-#define HOOK_DEF(ret, name, conv, ...) \
-ret (conv *CONCAT(name, _original))(__VA_ARGS__); \
-ret name(__VA_ARGS__)
 
 #define DEFER(x) \
   ::Fuel::Defer CONCAT2(_defer_, __COUNTER__)([&]() { \
     x            \
-  });
+  })
+
+template<typename R, typename T>
+R forcedCast(T t)
+{
+  union
+  {
+    T t;
+    R r;
+  } v;
+  v.t = t;
+  return v.r;
+}
+
+#ifdef FUEL_DEBUG
+
+#define DEBUG(x) x
+#define NON_DEBUG(x)
+
+#else
+
+#define DEBUG(x)
+#define NON_DEBUG(x) x
+
+#endif
