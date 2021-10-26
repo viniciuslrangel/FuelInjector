@@ -17,14 +17,17 @@ class Injector {
   HMODULE module{};
 
   bool opened;
+  bool ownHandle;
 
   struct {
     HANDLE rPipe{}, wPipe{};
   }    remote{};
 public:
-  explicit Injector() : Injector(0) {}
+  explicit Injector() : Injector(DWORD(0)) {}
 
   explicit Injector(DWORD pid);
+
+  explicit Injector(HANDLE process, DWORD pid = 0);
 
   ~Injector();
 

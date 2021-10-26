@@ -58,20 +58,30 @@ public:
 
 namespace Fuel {
 
-Injector::Injector(DWORD pid) : pid(pid), opened(false) {
-}
+Injector::Injector(DWORD pid) :
+    pid(pid),
+    opened(false),
+    ownHandle(true) {}
+
+Injector::Injector(HANDLE process, DWORD pid) :
+    pHandle(process),
+    pid(pid != 0 ? pid : GetProcessId(process)),
+    opened(false),
+    ownHandle(false) {}
 
 Injector::~Injector() {
   Unbind();
 }
 
 bool Injector::Bind() {
-  if (pHandle != nullptr) {
+  if (opened) {
     return false;
   }
-  pHandle = OpenProcess(PROCESS_ALL_ACCESS, false, pid); // NOLINT(hicpp-signed-bitwise)
-  if (pHandle == nullptr) {
-    return false;
+  if (ownHandle) {
+    pHandle = OpenProcess(PROCESS_ALL_ACCESS, false, pid); // NOLINT(hicpp-signed-bitwise)
+    if (pHandle == nullptr) {
+      return false;
+    }
   }
 
   void *infoAddr;
@@ -144,6 +154,9 @@ bool Injector::Bind() {
 
   WriteProcessMemory(pHandle, infoAddr, &remote, sizeof(remote), nullptr);
 
+  std::string data = "(function (){\n    const old = console.log\n    console.log = function () {\n        old('Using console.log')\n        old.apply(null, arguments)\n    }\n})()";
+  Send(data.c_str(), data.size() + 1);
+
   ResumeThread(remoteThread);
 
   opened = true;
@@ -153,16 +166,18 @@ bool Injector::Bind() {
 
 void Injector::Unbind() {
   opened = false;
-  if (pHandle == nullptr) {
-    return;
+  if(ownHandle) {
+    if (pHandle == nullptr) {
+      return;
+    }
+    /*if (module != nullptr) {
+      HANDLE th = CreateRemoteThread(pHandle, nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(&FreeLibrary), module, 0, nullptr);
+      WaitForSingleObject(th, INFINITE);
+      CloseHandle(th);
+    }*/
+    CloseHandle(pHandle);
+    pHandle = nullptr;
   }
-  /*if (module != nullptr) {
-    HANDLE th = CreateRemoteThread(pHandle, nullptr, 0, reinterpret_cast<LPTHREAD_START_ROUTINE>(&FreeLibrary), module, 0, nullptr);
-    WaitForSingleObject(th, INFINITE);
-    CloseHandle(th);
-  }*/
-  CloseHandle(pHandle);
-  pHandle = nullptr;
 }
 
 bool Injector::IsOpen() const {
