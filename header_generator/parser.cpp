@@ -65,6 +65,7 @@ std::optional<FuncType> parseFuncType(const std::string &value) {
 
   FuncType                 result;
   bool                     &isConstructor  = result.isConstructor;
+  bool                     &isConst        = result.isConst;
   std::string              &modifier       = result.modifier;
   std::string              &fullIdentifier = result.name;
   std::string              &retType        = result.ret;
@@ -143,6 +144,8 @@ std::optional<FuncType> parseFuncType(const std::string &value) {
     }
   }
 
+  isConst = value.ends_with("const");
+
   return std::make_optional(result);
 }
 
@@ -152,21 +155,20 @@ std::optional<FuncType> parseFunctionName(const std::string &symbol, const Filte
     return std::nullopt;
   }
 
-  /*if (symbol == "??0TryCatch@v8@@QAE@PAVIsolate@1@@Z") {
-    DebugBreak();
-  }*/
-
   char buf[512] = {0};
   UnDecorateSymbolName(symbol.c_str(), buf, sizeof(buf),
                        UNDNAME_NO_ACCESS_SPECIFIERS | UNDNAME_NO_MEMBER_TYPE);
 
   std::string undecorated = buf;
+  const char* ws = " \t\n\r\f\v";
+  undecorated.erase(undecorated.find_last_not_of(ws) + 1);
+  undecorated.erase(0, undecorated.find_first_not_of(ws));
 
   if (undecorated.ends_with(']')) {
     return std::nullopt;
   }
 
-  if (undecorated.find('(') == std::string::npos || !undecorated.ends_with(')')) {
+  if (undecorated.find('(') == std::string::npos || !undecorated.find(')')) {
     return std::nullopt;
   }
 

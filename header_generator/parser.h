@@ -7,6 +7,7 @@
 
 struct FuncType {
   bool                     isConstructor;
+  bool                     isConst;
   std::string              undecorated;
   std::string              symbol;
   std::string              className;

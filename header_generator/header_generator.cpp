@@ -40,6 +40,9 @@ void formatFunc(const FuncType &func, std::stringstream &output) {
 
   if (func.modifier == "__thiscall") {
     bool empty = func.args.empty();
+    if(func.isConst) {
+      typList += "const ";
+    }
     typList += func.className;
     typList += "*";
     typList += empty ? "" : ", ";
@@ -73,7 +76,7 @@ void formatFunc(const FuncType &func, std::stringstream &output) {
     args += (isLast ? "" : ", ");
   }
 
-  std::string definition = func.ret + " " + func.name + "(" + params + ")";
+  std::string definition = func.ret + " " + func.name + "(" + params + ")" + (func.isConst ? " const" : "");
   std::string type       = (func.isConstructor ? "void" : func.ret) + " (" + func.modifier + "*)(" + typList + ")";
 
   const char *hasReturn = func.isConstructor ? "" : "return";
