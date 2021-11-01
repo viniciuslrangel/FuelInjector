@@ -158,10 +158,17 @@ int main(int argc, char **argv) {
   total << "#include \"v8.h\"\n\n";
   total << "extern HMODULE v8Module;\n\n\n";
 
-  for (const auto &item: symbols
+  auto valueView = symbols
       | std::views::transform(transform)
       | std::views::filter(optionalFilter)
-      | std::views::transform([](auto &&p) { return p.value(); })) {
+      | std::views::transform([](auto &&p) { return p.value(); });
+
+  std::vector<FuncType> values(valueView.begin(), valueView.end());
+  std::ranges::sort(values.begin(), values.end(), [](auto a, auto b) {
+    return a.name < b.name;
+  });
+
+  for (const auto &item: values) {
     formatFunc(item, total);
   }
   std::cout << total.str() << std::endl;
