@@ -14,11 +14,26 @@ static struct {
 
 } connection{};
 
+std::function<void(const std::string &)> Fuel::SendBack;
+
 static DWORD WINAPI MainThread(LPVOID) {
   HMODULE v8Module = Fuel::V8BaseAdapter::FindModule("v8.dll");
   if (v8Module == nullptr) {
     v8Module = Fuel::V8BaseAdapter::FindModule();
   }
+
+  Fuel::SendBack = [](const std::string &str) -> void {
+    const char *data = str.c_str();
+    size_t     size  = str.size();
+    DWORD      w;
+    WriteFile(
+        connection.wPipe,
+        data,
+        size,
+        &w,
+        nullptr
+    );
+  };
 
   Fuel::V8BaseAdapter *adapter = Fuel::V8BaseAdapter::AutoSelectVersion(v8Module);
 
@@ -41,8 +56,7 @@ static DWORD WINAPI MainThread(LPVOID) {
 
   adapter->Setup(v8Module);
 
-  static std::string data;
-  static std::string output;
+  static std::stringstream data;
   while (true) {
     char  buffer[128];
     DWORD count = 0;
@@ -50,17 +64,15 @@ readAgain:
     if (!ReadFile(connection.rPipe, &buffer, sizeof(buffer), &count, nullptr) && GetLastError() != ERROR_IO_PENDING) {
       break;
     }
-    data.append(buffer, count);
+    data.write(buffer, count);
     if (count == sizeof(buffer)) {
       goto readAgain; // If there is more data to be read
     }
-    if (!data.empty()) {
-      output = "Echo: " + data;
-      DWORD o;
-      Fuel::CmdQueue::GetCmdList()->push_back(std::move(data));
-      data = std::string();
-      WriteFile(connection.wPipe, output.c_str(), output.size(), &o, nullptr);
+    std::string str = data.str();
+    if (!str.empty()) {
+      Fuel::CmdQueue::Publish(std::move(str));
     }
+    data = std::move(std::stringstream());
   }
   return 0;
 }
@@ -88,3 +100,5 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpReserved) {
   }
   return true;
 }
+
+Fuel::CmdQueue::Callback Fuel::CmdQueue::registeredCallback = {};

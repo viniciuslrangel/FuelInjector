@@ -154,9 +154,6 @@ bool Injector::Bind() {
 
   WriteProcessMemory(pHandle, infoAddr, &remote, sizeof(remote), nullptr);
 
-  std::string data = "(function (){\n    const old = console.log\n    console.log = function () {\n        old('Using console.log')\n        old.apply(null, arguments)\n    }\n})()";
-  Send(data.c_str(), data.size() + 1);
-
   ResumeThread(remoteThread);
 
   opened = true;

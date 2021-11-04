@@ -13,6 +13,7 @@ add_library(
 
         v8_adapters/v8_adapter_v6.hpp
         v8_adapters/v8_adapter_v6.cpp
+        v8_adapters/headers/6.0.286.52/source.cpp
 )
 
 
