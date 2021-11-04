@@ -29,7 +29,7 @@ std::optional<std::string> parseIdentifier(const std::string &value) {
     char c = value[i];
     if ((c == ' ' || c == ',') && modCount == 0) {
       auto v = value.substr(0, i);
-      if (v == "class" || v == "struct" || v == "enum" || v == "unsigned") {
+      if (v == "class" || v == "struct" || v == "enum" || v == "unsigned" || v.ends_with("::operator")) {
         continue;
       }
       if (i + 1 < size && (value[i + 1] == '*' || value[i + 1] == '&')) {
