@@ -11,51 +11,40 @@ using std::string_literals::operator ""s;
 static Fuel::Injector injector;
 
 int main(int argc, char *argv[]) {
-  std::string title;
-  DWORD       pid = 0;
-
-  for (int i = 1; i < argc; i++) {
-    static const auto titleArg = "-title"s;
-    static const auto pidArg   = "-pid"s;
-
-    auto arg  = argv[i];
-    auto next = argv[i + 1];
-    if (titleArg == arg && i < argc - 1) {
-      title = next;
-    } else if (pidArg == arg) {
-      std::string pidStr;
-      if (i == argc - 1 || next[0] == '-') {
-        std::cerr << "Pid: " << std::flush;
-        std::cin >> pidStr;
-      } else {
-        pidStr = std::string(next);
-      }
-      if (pidStr.rfind("0x", 0) == 0) {
-        pid = std::stoi(pidStr.substr(2), nullptr, 16);
-      } else {
-        pid = std::stoi(pidStr);
-      }
-    }
-  }
-
-  if (title.empty() && pid == 0) {
-    std::cerr << "Help: " << argv[0] << " [-title WindowName] [-pid 123] [-pid 0x123]" << std::endl;
+  if (argc < 2) {
+    std::cout << "Usage: " << argv[0] << " exePath args..." << std::endl;
     return 1;
   }
 
-  if (!title.empty()) {
-    HWND hwnd = FindWindowA(nullptr, title.c_str());
-    if (hwnd != nullptr) {
-      GetWindowThreadProcessId(hwnd, &pid);
-    }
-  }
+  STARTUPINFO         startupInfo;
+  PROCESS_INFORMATION pInfo;
+  ZeroMemory(&startupInfo, sizeof(startupInfo));
+  ZeroMemory(&pInfo, sizeof(pInfo));
+  startupInfo.cb = sizeof(startupInfo);
 
-  if (pid == 0) {
-    std::cerr << "Could not find process";
+  char *argStart = GetCommandLine() + strlen(argv[0]);
+  argStart += (GetCommandLine()[0] == '"' ? 2 : 0) + 1;
+
+  bool created = CreateProcessA(
+      nullptr,
+      argStart,
+      nullptr,
+      nullptr,
+      FALSE,
+      CREATE_SUSPENDED,
+      nullptr,
+      nullptr,
+      &startupInfo,
+      &pInfo
+  );
+
+  if (!created) {
+    std::cout << "Could not create process" << std::endl;
     return 2;
   }
 
-  injector = Fuel::Injector(pid);
+
+  injector = Fuel::Injector(pInfo.hProcess, pInfo.dwProcessId);
 
   SetConsoleCtrlHandler([](DWORD signal) -> BOOL {
     if (signal == CTRL_C_EVENT) {
@@ -66,9 +55,13 @@ int main(int argc, char *argv[]) {
   }, true);
 
   if (!injector.Bind()) {
-    std::cerr << "Could not bind!";
+    DWORD exitCode = -1;
+    GetExitCodeProcess(pInfo.hProcess, &exitCode);
+    std::cerr << "Could not bind! (" << exitCode << ")" << std::endl;
     return 3;
   }
+
+  ResumeThread(pInfo.hThread);
 
   std::thread th([]() {
     char  buffer[128];
