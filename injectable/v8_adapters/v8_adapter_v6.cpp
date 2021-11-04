@@ -1,73 +1,67 @@
 #include "v8_adapter_v6.hpp"
 
-#include "../cmd_queue.hpp"
-
 #include <polyhook2/ZydisDisassembler.hpp>
 
 #if defined(__x86_64__) || defined(_WIN64)
 #define ARCH(_32, _64) _64
-
 #include <polyhook2/Detour/x64Detour.hpp>
-
 #elif defined(__i386__) || defined(_WIN32)
 #define ARCH(_32, _64) _32
-
 #include <polyhook2/Detour/x86Detour.hpp>
-
 #else
 #error Arch not supported
 #endif
 
-#include "headers/6.0.286.52/v8.h"
-
 HMODULE v8Module;
 
-#define getProc(typ, name) \
-  static auto target = forcedCast<decltype(&typ), void*>((void*)GetProcAddress(v8Module, name))
+namespace Js {
 
-v8::Isolate *v8::Context::GetIsolate() {
-  getProc(v8::Context::GetIsolate, "?GetIsolate@Context@v8@@QAEPAVIsolate@2@XZ");
-  return (this->*target)();
+static const char *ToCString(const v8::String::Utf8Value &value) {
+  return *value ? *value : "<string conversion failed>";
 }
 
-v8::MaybeLocal<v8::String> v8::String::NewFromUtf8(v8::Isolate *isolate, const char *data, v8::NewStringType type, int length) {
-  getProc(v8::String::NewFromUtf8, "?NewFromUtf8@String@v8@@SA?AV?$MaybeLocal@VString@v8@@@2@PAVIsolate@2@PBDW4NewStringType@2@H@Z");
-  return target(isolate, data, type, length);
+static v8::MaybeLocal<v8::String> FromCString(v8::Isolate *isolate, const char *data) {
+  return v8::String::NewFromUtf8(isolate, data, v8::NewStringType::kNormal);
 }
 
-void v8::V8::ToLocalEmpty() {
-  getProc(v8::V8::ToLocalEmpty, "?ToLocalEmpty@V8@v8@@CAXXZ");
-  return target();
+static const char *ValueToString(v8::Local<v8::Value> value) {
+  v8::String::Utf8Value str(value);
+  return ToCString(str);
 }
 
-v8::MaybeLocal<v8::Script> v8::Script::Compile(v8::Local<v8::Context> context, v8::Local<v8::String> source, v8::ScriptOrigin *origin) {
-  getProc(v8::Script::Compile,
-          "?Compile@Script@v8@@SA?AV?$MaybeLocal@VScript@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VString@v8@@@2@PAVScriptOrigin@2@@Z");
-  return target(context, source, origin);
-}
-
-/*HOOK_DEF(v8::MaybeLocal<v8::Value>, V8ScriptRun, ARCH(__thiscall, ), v8::Script *this_, v8::Local<v8::Context> context);*/
-decltype(&v8::Script::Run) v8ScriptRun_Original;
-v8::MaybeLocal<v8::Value> v8::Script::Run(Local<Context> context) {
-  {
-    auto list = Fuel::CmdQueue::GetCmdList();
-
-    static int count = 0;
-    std::cout << "RUN " << count++ << std::endl;
-    if (count > 25)
-      for (const auto &code: *list) {
-        const auto &str = v8::String::NewFromUtf8(context->GetIsolate(), code.c_str(), v8::NewStringType::kNormal);
-
-        v8::Local<v8::String> src;
-        v8::Local<v8::Script> script;
-        if (str.ToLocal(&src) && v8::Script::Compile(context, src).ToLocal(&script)) {
-          (this->*v8ScriptRun_Original)(context);
-        }
-      }
-    list->clear();
+static void Print(const v8::FunctionCallbackInfo<v8::Value> &args) {
+  bool     first = true;
+  for (int i     = 0; i < args.Length(); i++) {
+    v8::HandleScope handle_scope(args.GetIsolate());
+    if (first) {
+      first = false;
+    } else {
+      std::cout << " ";
+    }
+    const char *cstr = ValueToString(args[i]);
+    std::cout << cstr;
   }
+  std::cout << '\n' << std::endl;
+}
 
-  return (this->*v8ScriptRun_Original)(context);
+}
+
+Fuel::V8Adapter6 *instance = nullptr;
+
+decltype(&v8::Script::Run) v8_Script_Run_Tramp;
+v8::MaybeLocal<v8::Value> __thiscall Fuel::v8_Script_Run(v8::Script *_this, v8::Local<v8::Context> context) {
+
+  DEFER(
+      if (instance != nullptr && (*instance).isolate == nullptr) {
+        instance->isolate = context->GetIsolate();
+        instance->_context.Reset(context->GetIsolate(), context);
+        instance->createLibs();
+        instance->detour->unHook();
+        delete instance->detour;
+      }
+  );
+
+  return (_this->*v8_Script_Run_Tramp)(context);
 }
 
 void Fuel::V8Adapter6::Setup(HMODULE mod) {
@@ -77,6 +71,7 @@ void Fuel::V8Adapter6::Setup(HMODULE mod) {
   isUp = true;
 
   v8Module = mod;
+  instance = this;
 
   PLH::Log::registerLogger(std::make_shared<PLH::ErrorLog>());
 
@@ -96,12 +91,14 @@ void Fuel::V8Adapter6::Setup(HMODULE mod) {
   PLH::ZydisDisassembler dis(PLH::Mode::ARCH(x86, x64));
   detour = new ARCH(PLH::x86Detour, PLH::x64Detour)(
       reinterpret_cast<const char *>(runAddr),
-      forcedCast<const char *>(&v8::Script::Run),
-      forcedCast<uint64_t *>(&v8ScriptRun_Original),
+      forcedCast<const char *>(&v8_Script_Run),
+      forcedCast<uint64_t *>(&v8_Script_Run_Tramp),
       reinterpret_cast<PLH::ADisassembler &>(dis)
   );
   auto ok = detour->hook();
   std::cout << "Hooking status: " << ok << std::endl;
+
+  Fuel::CmdQueue::Register([this](auto &&l) { this->RunCode(l); });
 }
 
 void Fuel::V8Adapter6::Shutdown() {
@@ -109,8 +106,78 @@ void Fuel::V8Adapter6::Shutdown() {
     return;
   }
   isUp = false;
+
+  Fuel::CmdQueue::Unregister();
+  _context.Reset();
   if (detour != nullptr) {
     detour->unHook();
     delete detour;
   }
+}
+
+void Fuel::V8Adapter6::RunCode(Fuel::CmdQueue::List &list) {
+  if (isolate == nullptr) {
+    return;
+  }
+  std::string result;
+  DEFER(
+      if (!result.empty()) {
+        Fuel::SendBack(result);
+      }
+  );
+
+  v8::Locker locker(isolate);
+
+  v8::Isolate::Scope     isolateScope(isolate);
+  v8::HandleScope        handle_scope(isolate);
+  v8::Local<v8::Context> context = this->_context.Get(isolate);
+  v8::Context::Scope     scope(context);
+
+  auto begin = list.begin();
+  while (begin != list.end()) {
+    std::string code = std::move(*begin);
+    begin = list.erase(begin);
+
+    v8::TryCatch tryCatch(isolate);
+
+    v8::Local<v8::String> src    = Js::FromCString(isolate, code.c_str()).ToLocalChecked();
+    v8::Local<v8::Script> script = v8::Script::Compile(context, src).ToLocalChecked();
+
+    auto ret = script->Run(context);
+    if (tryCatch.HasCaught()) {
+      v8::Local<v8::Value>      exception  = tryCatch.Exception();
+      v8::Local<v8::Message>    message    = tryCatch.Message();
+      v8::Local<v8::StackTrace> stackTrace = message->GetStackTrace();
+
+      std::stringstream ss;
+      ss << "Uncaught " << Js::ValueToString(exception) << '\n';
+      for (int i = 0; i < stackTrace->GetFrameCount(); i++) {
+        v8::Local<v8::StackFrame> frame = stackTrace->GetFrame(i);
+        ss << std::format(
+            "  at {} ({}:{}:{})\n",
+            Js::ValueToString(frame->GetFunctionName()),
+            Js::ValueToString(frame->GetScriptNameOrSourceURL()),
+            frame->GetLineNumber(),
+            frame->GetColumn()
+        );
+      }
+      result = ss.str();
+    } else if (ret.IsEmpty()) {
+      result = "<empty>";
+    } else {
+      result = Js::ValueToString(ret.ToLocalChecked());
+    }
+  }
+}
+
+void Fuel::V8Adapter6::createLibs() {
+  v8::HandleScope        handle_scope(isolate);
+  v8::Local<v8::Context> context = _context.Get(isolate);
+  v8::Local<v8::Object>  global  = context->Global();
+
+  global->Set(
+      context,
+      Js::FromCString(isolate, "fuel_print").ToLocalChecked(),
+      v8::Function::New(isolate, &Js::Print)
+  );
 }
