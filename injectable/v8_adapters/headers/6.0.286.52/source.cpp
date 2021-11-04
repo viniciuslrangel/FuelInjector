@@ -5,13 +5,83 @@
 extern HMODULE v8Module;
 
 
-class v8::Maybe<bool> v8::Object::Has(class v8::Local<class v8::Context> param_0, unsigned int param_1) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, unsigned int)) GetProcAddress(v8Module, "?Has@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@I@Z");
+void v8::Context::AllowCodeGenerationFromStrings(bool param_0) {
+  static const auto target = (void (__thiscall*)(v8::Context*, bool)) GetProcAddress(v8Module, "?AllowCodeGenerationFromStrings@Context@v8@@QAEX_N@Z");
+  return target(this, param_0);
+}
+
+void v8::Context::DetachGlobal() {
+  static const auto target = (void (__thiscall*)(v8::Context*)) GetProcAddress(v8Module, "?DetachGlobal@Context@v8@@QAEXXZ");
+  return target(this);
+}
+
+void v8::Context::Enter() {
+  static const auto target = (void (__thiscall*)(v8::Context*)) GetProcAddress(v8Module, "?Enter@Context@v8@@QAEXXZ");
+  return target(this);
+}
+
+unsigned int v8::Context::EstimatedSize() {
+  static const auto target = (unsigned int (__thiscall*)(v8::Context*)) GetProcAddress(v8Module, "?EstimatedSize@Context@v8@@QAEIXZ");
+  return target(this);
+}
+
+void v8::Context::Exit() {
+  static const auto target = (void (__thiscall*)(v8::Context*)) GetProcAddress(v8Module, "?Exit@Context@v8@@QAEXXZ");
+  return target(this);
+}
+
+class v8::MaybeLocal<class v8::Context> v8::Context::FromSnapshot(class v8::Isolate * param_0, unsigned int param_1, struct v8::DeserializeInternalFieldsCallback param_2, class v8::ExtensionConfiguration * param_3, class v8::MaybeLocal<class v8::Value> param_4) {
+  static const auto target = (class v8::MaybeLocal<class v8::Context> (__cdecl*)(class v8::Isolate *, unsigned int, struct v8::DeserializeInternalFieldsCallback, class v8::ExtensionConfiguration *, class v8::MaybeLocal<class v8::Value>)) GetProcAddress(v8Module, "?FromSnapshot@Context@v8@@SA?AV?$MaybeLocal@VContext@v8@@@2@PAVIsolate@2@IUDeserializeInternalFieldsCallback@2@PAVExtensionConfiguration@2@V?$MaybeLocal@VValue@v8@@@2@@Z");
+  return target(param_0, param_1, param_2, param_3, param_4);
+}
+
+class v8::Local<class v8::Object> v8::Context::GetExtrasBindingObject() {
+  static const auto target = (class v8::Local<class v8::Object> (__thiscall*)(v8::Context*)) GetProcAddress(v8Module, "?GetExtrasBindingObject@Context@v8@@QAE?AV?$Local@VObject@v8@@@2@XZ");
+  return target(this);
+}
+
+class v8::Isolate * v8::Context::GetIsolate() {
+  static const auto target = (class v8::Isolate * (__thiscall*)(v8::Context*)) GetProcAddress(v8Module, "?GetIsolate@Context@v8@@QAEPAVIsolate@2@XZ");
+  return target(this);
+}
+
+class v8::Local<class v8::Value> v8::Context::GetSecurityToken() {
+  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Context*)) GetProcAddress(v8Module, "?GetSecurityToken@Context@v8@@QAE?AV?$Local@VValue@v8@@@2@XZ");
+  return target(this);
+}
+
+class v8::Local<class v8::Object> v8::Context::Global() {
+  static const auto target = (class v8::Local<class v8::Object> (__thiscall*)(v8::Context*)) GetProcAddress(v8Module, "?Global@Context@v8@@QAE?AV?$Local@VObject@v8@@@2@XZ");
+  return target(this);
+}
+
+bool v8::Context::IsCodeGenerationFromStringsAllowed() {
+  static const auto target = (bool (__thiscall*)(v8::Context*)) GetProcAddress(v8Module, "?IsCodeGenerationFromStringsAllowed@Context@v8@@QAE_NXZ");
+  return target(this);
+}
+
+class v8::Local<class v8::Context> v8::Context::New(class v8::Isolate * param_0, class v8::ExtensionConfiguration * param_1, class v8::MaybeLocal<class v8::ObjectTemplate> param_2, class v8::MaybeLocal<class v8::Value> param_3) {
+  static const auto target = (class v8::Local<class v8::Context> (__cdecl*)(class v8::Isolate *, class v8::ExtensionConfiguration *, class v8::MaybeLocal<class v8::ObjectTemplate>, class v8::MaybeLocal<class v8::Value>)) GetProcAddress(v8Module, "?New@Context@v8@@SA?AV?$Local@VContext@v8@@@2@PAVIsolate@2@PAVExtensionConfiguration@2@V?$MaybeLocal@VObjectTemplate@v8@@@2@V?$MaybeLocal@VValue@v8@@@2@@Z");
+  return target(param_0, param_1, param_2, param_3);
+}
+
+class v8::MaybeLocal<class v8::Object> v8::Context::NewRemoteContext(class v8::Isolate * param_0, class v8::Local<class v8::ObjectTemplate> param_1, class v8::MaybeLocal<class v8::Value> param_2) {
+  static const auto target = (class v8::MaybeLocal<class v8::Object> (__cdecl*)(class v8::Isolate *, class v8::Local<class v8::ObjectTemplate>, class v8::MaybeLocal<class v8::Value>)) GetProcAddress(v8Module, "?NewRemoteContext@Context@v8@@SA?AV?$MaybeLocal@VObject@v8@@@2@PAVIsolate@2@V?$Local@VObjectTemplate@v8@@@2@V?$MaybeLocal@VValue@v8@@@2@@Z");
+  return target(param_0, param_1, param_2);
+}
+
+void v8::Context::SetAlignedPointerInEmbedderData(int param_0, void * param_1) {
+  static const auto target = (void (__thiscall*)(v8::Context*, int, void *)) GetProcAddress(v8Module, "?SetAlignedPointerInEmbedderData@Context@v8@@QAEXHPAX@Z");
   return target(this, param_0, param_1);
 }
 
-class v8::Maybe<enum v8::PropertyAttribute> v8::Object::GetRealNamedPropertyAttributesInPrototypeChain(class v8::Local<class v8::String> param_0) {
-  static const auto target = (class v8::Maybe<enum v8::PropertyAttribute> (__thiscall*)(v8::Object*, class v8::Local<class v8::String>)) GetProcAddress(v8Module, "?GetRealNamedPropertyAttributesInPrototypeChain@Object@v8@@QAE?AV?$Maybe@W4PropertyAttribute@v8@@@2@V?$Local@VString@v8@@@2@@Z");
+void v8::Context::SetEmbedderData(int param_0, class v8::Local<class v8::Value> param_1) {
+  static const auto target = (void (__thiscall*)(v8::Context*, int, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?SetEmbedderData@Context@v8@@QAEXHV?$Local@VValue@v8@@@2@@Z");
+  return target(this, param_0, param_1);
+}
+
+void v8::Context::SetErrorMessageForCodeGenerationFromStrings(class v8::Local<class v8::String> param_0) {
+  static const auto target = (void (__thiscall*)(v8::Context*, class v8::Local<class v8::String>)) GetProcAddress(v8Module, "?SetErrorMessageForCodeGenerationFromStrings@Context@v8@@QAEXV?$Local@VString@v8@@@2@@Z");
   return target(this, param_0);
 }
 
@@ -20,178 +90,13 @@ void v8::Context::SetSecurityToken(class v8::Local<class v8::Value> param_0) {
   return target(this, param_0);
 }
 
-unsigned int v8::Context::EstimatedSize() {
-  static const auto target = (unsigned int (__thiscall*)(v8::Context*)) GetProcAddress(v8Module, "?EstimatedSize@Context@v8@@QAEIXZ");
-  return target(this);
-}
-
-class v8::Local<class v8::String> v8::String::NewFromUtf8(class v8::Isolate * param_0, char const * param_1, enum v8::String::NewStringType param_2, int param_3) {
-  static const auto target = (class v8::Local<class v8::String> (__cdecl*)(class v8::Isolate *, char const *, enum v8::String::NewStringType, int)) GetProcAddress(v8Module, "?NewFromUtf8@String@v8@@SA?AV?$Local@VString@v8@@@2@PAVIsolate@2@PBDW4NewStringType@12@H@Z");
-  return target(param_0, param_1, param_2, param_3);
-}
-
-void * v8::Object::SlowGetAlignedPointerFromInternalField(int param_0) {
-  static const auto target = (void * (__thiscall*)(v8::Object*, int)) GetProcAddress(v8Module, "?SlowGetAlignedPointerFromInternalField@Object@v8@@AAEPAXH@Z");
+void * v8::Context::SlowGetAlignedPointerFromEmbedderData(int param_0) {
+  static const auto target = (void * (__thiscall*)(v8::Context*, int)) GetProcAddress(v8Module, "?SlowGetAlignedPointerFromEmbedderData@Context@v8@@AAEPAXH@Z");
   return target(this, param_0);
 }
 
-class v8::Local<class v8::Object> v8::Object::Clone() {
-  static const auto target = (class v8::Local<class v8::Object> (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?Clone@Object@v8@@QAE?AV?$Local@VObject@v8@@@2@XZ");
-  return target(this);
-}
-
-class v8::Maybe<bool> v8::Object::HasOwnProperty(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>)) GetProcAddress(v8Module, "?HasOwnProperty@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@@Z");
-  return target(this, param_0, param_1);
-}
-
-class v8::Maybe<bool> v8::Object::DeletePrivate(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Private> param_1) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Private>)) GetProcAddress(v8Module, "?DeletePrivate@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VPrivate@v8@@@2@@Z");
-  return target(this, param_0, param_1);
-}
-
-class v8::Local<class v8::Array> v8::Object::GetPropertyNames() {
-  static const auto target = (class v8::Local<class v8::Array> (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?GetPropertyNames@Object@v8@@QAE?AV?$Local@VArray@v8@@@2@XZ");
-  return target(this);
-}
-
-bool v8::Object::SetAccessor(class v8::Local<class v8::String> param_0, void (__cdecl*param_1)(class v8::Local<class v8::String>,class v8::PropertyCallbackInfo<class v8::Value> const &), void (__cdecl*param_2)(class v8::Local<class v8::String>,class v8::Local<class v8::Value>,class v8::PropertyCallbackInfo<void> const &), class v8::Local<class v8::Value> param_3, enum v8::AccessControl param_4, enum v8::PropertyAttribute param_5) {
-  static const auto target = (bool (__thiscall*)(v8::Object*, class v8::Local<class v8::String>, void (__cdecl*)(class v8::Local<class v8::String>,class v8::PropertyCallbackInfo<class v8::Value> const &), void (__cdecl*)(class v8::Local<class v8::String>,class v8::Local<class v8::Value>,class v8::PropertyCallbackInfo<void> const &), class v8::Local<class v8::Value>, enum v8::AccessControl, enum v8::PropertyAttribute)) GetProcAddress(v8Module, "?SetAccessor@Object@v8@@QAE_NV?$Local@VString@v8@@@2@P6AX0ABV?$PropertyCallbackInfo@VValue@v8@@@2@@ZP6AX0V?$Local@VValue@v8@@@2@ABV?$PropertyCallbackInfo@X@2@@Z3W4AccessControl@2@W4PropertyAttribute@2@@Z");
-  return target(this, param_0, param_1, param_2, param_3, param_4, param_5);
-}
-
-void v8::Object::SetAlignedPointerInInternalFields(int param_0, int * const param_1, void * * const param_2) {
-  static const auto target = (void (__thiscall*)(v8::Object*, int, int * const, void * * const)) GetProcAddress(v8Module, "?SetAlignedPointerInInternalFields@Object@v8@@QAEXHQAHQAPAX@Z");
-  return target(this, param_0, param_1, param_2);
-}
-
-bool v8::Object::HasIndexedLookupInterceptor() {
-  static const auto target = (bool (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?HasIndexedLookupInterceptor@Object@v8@@QAE_NXZ");
-  return target(this);
-}
-
-class v8::MaybeLocal<class v8::String> v8::Object::ObjectProtoToString(class v8::Local<class v8::Context> param_0) {
-  static const auto target = (class v8::MaybeLocal<class v8::String> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>)) GetProcAddress(v8Module, "?ObjectProtoToString@Object@v8@@QAE?AV?$MaybeLocal@VString@v8@@@2@V?$Local@VContext@v8@@@2@@Z");
-  return target(this, param_0);
-}
-
-class v8::Local<class v8::Value> v8::TryCatch::StackTrace() const {
-  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(const v8::TryCatch*)) GetProcAddress(v8Module, "?StackTrace@TryCatch@v8@@QBE?AV?$Local@VValue@v8@@@2@XZ");
-  return target(this);
-}
-
-void v8::Object::SetInternalField(int param_0, class v8::Local<class v8::Value> param_1) {
-  static const auto target = (void (__thiscall*)(v8::Object*, int, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?SetInternalField@Object@v8@@QAEXHV?$Local@VValue@v8@@@2@@Z");
-  return target(this, param_0, param_1);
-}
-
-class v8::MaybeLocal<class v8::Value> v8::Object::GetOwnPropertyDescriptor(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1) {
-  static const auto target = (class v8::MaybeLocal<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>)) GetProcAddress(v8Module, "?GetOwnPropertyDescriptor@Object@v8@@QAE?AV?$MaybeLocal@VValue@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@@Z");
-  return target(this, param_0, param_1);
-}
-
-class v8::MaybeLocal<class v8::Value> v8::Object::GetRealNamedProperty(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1) {
-  static const auto target = (class v8::MaybeLocal<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>)) GetProcAddress(v8Module, "?GetRealNamedProperty@Object@v8@@QAE?AV?$MaybeLocal@VValue@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@@Z");
-  return target(this, param_0, param_1);
-}
-
-class v8::Maybe<bool> v8::Object::SetPrototype(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Value> param_1) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?SetPrototype@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VValue@v8@@@2@@Z");
-  return target(this, param_0, param_1);
-}
-
-class v8::MaybeLocal<class v8::Value> v8::Function::Call(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Value> param_1, int param_2, class v8::Local<class v8::Value> * const param_3) {
-  static const auto target = (class v8::MaybeLocal<class v8::Value> (__thiscall*)(v8::Function*, class v8::Local<class v8::Context>, class v8::Local<class v8::Value>, int, class v8::Local<class v8::Value> * const)) GetProcAddress(v8Module, "?Call@Function@v8@@QAE?AV?$MaybeLocal@VValue@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VValue@v8@@@2@HQAV52@@Z");
-  return target(this, param_0, param_1, param_2, param_3);
-}
-
-class v8::Local<class v8::Value> v8::Object::SlowGetInternalField(int param_0) {
-  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Object*, int)) GetProcAddress(v8Module, "?SlowGetInternalField@Object@v8@@AAE?AV?$Local@VValue@v8@@@2@H@Z");
-  return target(this, param_0);
-}
-
-class v8::Local<class v8::Value> v8::Object::GetRealNamedProperty(class v8::Local<class v8::String> param_0) {
-  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::String>)) GetProcAddress(v8Module, "?GetRealNamedProperty@Object@v8@@QAE?AV?$Local@VValue@v8@@@2@V?$Local@VString@v8@@@2@@Z");
-  return target(this, param_0);
-}
-
-class v8::Local<class v8::Context> v8::Context::New(class v8::Isolate * param_0, class v8::ExtensionConfiguration * param_1, class v8::MaybeLocal<class v8::ObjectTemplate> param_2, class v8::MaybeLocal<class v8::Value> param_3) {
-  static const auto target = (class v8::Local<class v8::Context> (__cdecl*)(class v8::Isolate *, class v8::ExtensionConfiguration *, class v8::MaybeLocal<class v8::ObjectTemplate>, class v8::MaybeLocal<class v8::Value>)) GetProcAddress(v8Module, "?New@Context@v8@@SA?AV?$Local@VContext@v8@@@2@PAVIsolate@2@PAVExtensionConfiguration@2@V?$MaybeLocal@VObjectTemplate@v8@@@2@V?$MaybeLocal@VValue@v8@@@2@@Z");
-  return target(param_0, param_1, param_2, param_3);
-}
-
-v8::TryCatch::TryCatch() {
-  static const auto target = (void (__thiscall*)(v8::TryCatch*)) GetProcAddress(v8Module, "??0TryCatch@v8@@QAE@XZ");
-  target(this);
-}
-
-class v8::Local<class v8::Object> v8::Context::GetExtrasBindingObject() {
-  static const auto target = (class v8::Local<class v8::Object> (__thiscall*)(v8::Context*)) GetProcAddress(v8Module, "?GetExtrasBindingObject@Context@v8@@QAE?AV?$Local@VObject@v8@@@2@XZ");
-  return target(this);
-}
-
-v8::TryCatch::~TryCatch() {
-  static const auto target = (void (__thiscall*)(v8::TryCatch*)) GetProcAddress(v8Module, "??1TryCatch@v8@@QAE@XZ");
-  target(this);
-}
-
-class v8::MaybeLocal<class v8::Value> v8::Object::CallAsFunction(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Value> param_1, int param_2, class v8::Local<class v8::Value> * const param_3) {
-  static const auto target = (class v8::MaybeLocal<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Value>, int, class v8::Local<class v8::Value> * const)) GetProcAddress(v8Module, "?CallAsFunction@Object@v8@@QAE?AV?$MaybeLocal@VValue@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VValue@v8@@@2@HQAV52@@Z");
-  return target(this, param_0, param_1, param_2, param_3);
-}
-
-class v8::MaybeLocal<class v8::Value> v8::TryCatch::StackTrace(class v8::Local<class v8::Context> param_0) const {
-  static const auto target = (class v8::MaybeLocal<class v8::Value> (__thiscall*)(const v8::TryCatch*, class v8::Local<class v8::Context>)) GetProcAddress(v8Module, "?StackTrace@TryCatch@v8@@QBE?AV?$MaybeLocal@VValue@v8@@@2@V?$Local@VContext@v8@@@2@@Z");
-  return target(this, param_0);
-}
-
-bool v8::Object::HasRealNamedCallbackProperty(class v8::Local<class v8::String> param_0) {
-  static const auto target = (bool (__thiscall*)(v8::Object*, class v8::Local<class v8::String>)) GetProcAddress(v8Module, "?HasRealNamedCallbackProperty@Object@v8@@QAE_NV?$Local@VString@v8@@@2@@Z");
-  return target(this, param_0);
-}
-
-class v8::internal::Object * * v8::HandleScope::CreateHandle(class v8::internal::HeapObject * param_0, class v8::internal::Object * param_1) {
-  static const auto target = (class v8::internal::Object * * (__cdecl*)(class v8::internal::HeapObject *, class v8::internal::Object *)) GetProcAddress(v8Module, "?CreateHandle@HandleScope@v8@@CAPAPAVObject@internal@2@PAVHeapObject@42@PAV342@@Z");
-  return target(param_0, param_1);
-}
-
-void v8::TryCatch::ResetInternal() {
-  static const auto target = (void (__thiscall*)(v8::TryCatch*)) GetProcAddress(v8Module, "?ResetInternal@TryCatch@v8@@AAEXXZ");
-  return target(this);
-}
-
-bool v8::Object::Set(unsigned int param_0, class v8::Local<class v8::Value> param_1) {
-  static const auto target = (bool (__thiscall*)(v8::Object*, unsigned int, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?Set@Object@v8@@QAE_NIV?$Local@VValue@v8@@@2@@Z");
-  return target(this, param_0, param_1);
-}
-
-class v8::MaybeLocal<class v8::Array> v8::Object::GetOwnPropertyNames(class v8::Local<class v8::Context> param_0) {
-  static const auto target = (class v8::MaybeLocal<class v8::Array> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>)) GetProcAddress(v8Module, "?GetOwnPropertyNames@Object@v8@@QAE?AV?$MaybeLocal@VArray@v8@@@2@V?$Local@VContext@v8@@@2@@Z");
-  return target(this, param_0);
-}
-
-bool v8::Object::HasOwnProperty(class v8::Local<class v8::String> param_0) {
-  static const auto target = (bool (__thiscall*)(v8::Object*, class v8::Local<class v8::String>)) GetProcAddress(v8Module, "?HasOwnProperty@Object@v8@@QAE_NV?$Local@VString@v8@@@2@@Z");
-  return target(this, param_0);
-}
-
-void v8::HandleScope::Initialize(class v8::Isolate * param_0) {
-  static const auto target = (void (__thiscall*)(v8::HandleScope*, class v8::Isolate *)) GetProcAddress(v8Module, "?Initialize@HandleScope@v8@@IAEXPAVIsolate@2@@Z");
-  return target(this, param_0);
-}
-
-void v8::Object::SetAlignedPointerInInternalField(int param_0, void * param_1) {
-  static const auto target = (void (__thiscall*)(v8::Object*, int, void *)) GetProcAddress(v8Module, "?SetAlignedPointerInInternalField@Object@v8@@QAEXHPAX@Z");
-  return target(this, param_0, param_1);
-}
-
-class v8::Local<class v8::UnboundScript> v8::Script::GetUnboundScript() {
-  static const auto target = (class v8::Local<class v8::UnboundScript> (__thiscall*)(v8::Script*)) GetProcAddress(v8Module, "?GetUnboundScript@Script@v8@@QAE?AV?$Local@VUnboundScript@v8@@@2@XZ");
-  return target(this);
-}
-
-bool v8::Object::Has(class v8::Local<class v8::Value> param_0) {
-  static const auto target = (bool (__thiscall*)(v8::Object*, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?Has@Object@v8@@QAE_NV?$Local@VValue@v8@@@2@@Z");
+class v8::Local<class v8::Value> v8::Context::SlowGetEmbedderData(int param_0) {
+  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Context*, int)) GetProcAddress(v8Module, "?SlowGetEmbedderData@Context@v8@@AAE?AV?$Local@VValue@v8@@@2@H@Z");
   return target(this, param_0);
 }
 
@@ -200,163 +105,93 @@ void v8::Context::UseDefaultSecurityToken() {
   return target(this);
 }
 
-bool v8::Object::Set(class v8::Local<class v8::Value> param_0, class v8::Local<class v8::Value> param_1) {
-  static const auto target = (bool (__thiscall*)(v8::Object*, class v8::Local<class v8::Value>, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?Set@Object@v8@@QAE_NV?$Local@VValue@v8@@@2@0@Z");
-  return target(this, param_0, param_1);
+class v8::MaybeLocal<class v8::Value> v8::Function::Call(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Value> param_1, int param_2, class v8::Local<class v8::Value> * const param_3) {
+  static const auto target = (class v8::MaybeLocal<class v8::Value> (__thiscall*)(v8::Function*, class v8::Local<class v8::Context>, class v8::Local<class v8::Value>, int, class v8::Local<class v8::Value> * const)) GetProcAddress(v8Module, "?Call@Function@v8@@QAE?AV?$MaybeLocal@VValue@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VValue@v8@@@2@HQAV52@@Z");
+  return target(this, param_0, param_1, param_2, param_3);
 }
 
-void v8::Context::DetachGlobal() {
-  static const auto target = (void (__thiscall*)(v8::Context*)) GetProcAddress(v8Module, "?DetachGlobal@Context@v8@@QAEXXZ");
-  return target(this);
-}
-
-enum v8::PropertyAttribute v8::Object::GetPropertyAttributes(class v8::Local<class v8::Value> param_0) {
-  static const auto target = (enum v8::PropertyAttribute (__thiscall*)(v8::Object*, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?GetPropertyAttributes@Object@v8@@QAE?AW4PropertyAttribute@2@V?$Local@VValue@v8@@@2@@Z");
-  return target(this, param_0);
-}
-
-class v8::Local<class v8::Context> v8::Object::CreationContext() {
-  static const auto target = (class v8::Local<class v8::Context> (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?CreationContext@Object@v8@@QAE?AV?$Local@VContext@v8@@@2@XZ");
-  return target(this);
-}
-
-class v8::Isolate * v8::Object::GetIsolate() {
-  static const auto target = (class v8::Isolate * (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?GetIsolate@Object@v8@@QAEPAVIsolate@2@XZ");
-  return target(this);
-}
-
-class v8::Maybe<enum v8::PropertyAttribute> v8::Object::GetRealNamedPropertyAttributes(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1) {
-  static const auto target = (class v8::Maybe<enum v8::PropertyAttribute> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>)) GetProcAddress(v8Module, "?GetRealNamedPropertyAttributes@Object@v8@@QAE?AV?$Maybe@W4PropertyAttribute@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@@Z");
-  return target(this, param_0, param_1);
-}
-
-class v8::MaybeLocal<class v8::Value> v8::Object::CallAsConstructor(class v8::Local<class v8::Context> param_0, int param_1, class v8::Local<class v8::Value> * const param_2) {
-  static const auto target = (class v8::MaybeLocal<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, int, class v8::Local<class v8::Value> * const)) GetProcAddress(v8Module, "?CallAsConstructor@Object@v8@@QAE?AV?$MaybeLocal@VValue@v8@@@2@V?$Local@VContext@v8@@@2@HQAV?$Local@VValue@v8@@@2@@Z");
+class v8::Local<class v8::Value> v8::Function::Call(class v8::Local<class v8::Value> param_0, int param_1, class v8::Local<class v8::Value> * const param_2) {
+  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Function*, class v8::Local<class v8::Value>, int, class v8::Local<class v8::Value> * const)) GetProcAddress(v8Module, "?Call@Function@v8@@QAE?AV?$Local@VValue@v8@@@2@V32@HQAV32@@Z");
   return target(this, param_0, param_1, param_2);
 }
 
-class v8::Maybe<bool> v8::Object::HasRealNamedCallbackProperty(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>)) GetProcAddress(v8Module, "?HasRealNamedCallbackProperty@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@@Z");
-  return target(this, param_0, param_1);
-}
-
-void v8::V8::ToLocalEmpty() {
-  static const auto target = (void (__cdecl*)()) GetProcAddress(v8Module, "?ToLocalEmpty@V8@v8@@CAXXZ");
-  return target();
-}
-
-bool v8::Object::ForceSet(class v8::Local<class v8::Value> param_0, class v8::Local<class v8::Value> param_1, enum v8::PropertyAttribute param_2) {
-  static const auto target = (bool (__thiscall*)(v8::Object*, class v8::Local<class v8::Value>, class v8::Local<class v8::Value>, enum v8::PropertyAttribute)) GetProcAddress(v8Module, "?ForceSet@Object@v8@@QAE_NV?$Local@VValue@v8@@@2@0W4PropertyAttribute@2@@Z");
-  return target(this, param_0, param_1, param_2);
-}
-
-bool v8::Object::HasNamedLookupInterceptor() {
-  static const auto target = (bool (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?HasNamedLookupInterceptor@Object@v8@@QAE_NXZ");
-  return target(this);
-}
-
-v8::TryCatch::TryCatch(class v8::Isolate * param_0) {
-  static const auto target = (void (__thiscall*)(v8::TryCatch*, class v8::Isolate *)) GetProcAddress(v8Module, "??0TryCatch@v8@@QAE@PAVIsolate@1@@Z");
-  target(this, param_0);
-}
-
-v8::HandleScope::HandleScope(class v8::Isolate * param_0) {
-  static const auto target = (void (__thiscall*)(v8::HandleScope*, class v8::Isolate *)) GetProcAddress(v8Module, "??0HandleScope@v8@@QAE@PAVIsolate@1@@Z");
-  target(this, param_0);
-}
-
-void v8::Context::Exit() {
-  static const auto target = (void (__thiscall*)(v8::Context*)) GetProcAddress(v8Module, "?Exit@Context@v8@@QAEXXZ");
-  return target(this);
-}
-
-class v8::Local<class v8::String> v8::Object::ObjectProtoToString() {
-  static const auto target = (class v8::Local<class v8::String> (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?ObjectProtoToString@Object@v8@@QAE?AV?$Local@VString@v8@@@2@XZ");
-  return target(this);
-}
-
-class v8::Maybe<bool> v8::Object::DefineProperty(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1, class v8::PropertyDescriptor & param_2) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>, class v8::PropertyDescriptor &)) GetProcAddress(v8Module, "?DefineProperty@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@AAVPropertyDescriptor@2@@Z");
-  return target(this, param_0, param_1, param_2);
-}
-
-class v8::Local<class v8::Value> v8::Object::Get(unsigned int param_0) {
-  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Object*, unsigned int)) GetProcAddress(v8Module, "?Get@Object@v8@@QAE?AV?$Local@VValue@v8@@@2@I@Z");
-  return target(this, param_0);
-}
-
-class v8::Local<class v8::Array> v8::Object::GetOwnPropertyNames() {
-  static const auto target = (class v8::Local<class v8::Array> (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?GetOwnPropertyNames@Object@v8@@QAE?AV?$Local@VArray@v8@@@2@XZ");
-  return target(this);
-}
-
-class v8::Local<class v8::Value> v8::Object::Get(class v8::Local<class v8::Value> param_0) {
-  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?Get@Object@v8@@QAE?AV?$Local@VValue@v8@@@2@V32@@Z");
-  return target(this, param_0);
-}
-
-class v8::Maybe<bool> v8::Object::SetPrivate(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Private> param_1, class v8::Local<class v8::Value> param_2) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Private>, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?SetPrivate@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VPrivate@v8@@@2@V?$Local@VValue@v8@@@2@@Z");
-  return target(this, param_0, param_1, param_2);
-}
-
-bool v8::Object::IsConstructor() {
-  static const auto target = (bool (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?IsConstructor@Object@v8@@QAE_NXZ");
-  return target(this);
-}
-
-class v8::Local<class v8::Object> v8::Object::FindInstanceInPrototypeChain(class v8::Local<class v8::FunctionTemplate> param_0) {
-  static const auto target = (class v8::Local<class v8::Object> (__thiscall*)(v8::Object*, class v8::Local<class v8::FunctionTemplate>)) GetProcAddress(v8Module, "?FindInstanceInPrototypeChain@Object@v8@@QAE?AV?$Local@VObject@v8@@@2@V?$Local@VFunctionTemplate@v8@@@2@@Z");
-  return target(this, param_0);
-}
-
-void * v8::Context::SlowGetAlignedPointerFromEmbedderData(int param_0) {
-  static const auto target = (void * (__thiscall*)(v8::Context*, int)) GetProcAddress(v8Module, "?SlowGetAlignedPointerFromEmbedderData@Context@v8@@AAEPAXH@Z");
-  return target(this, param_0);
-}
-
-bool v8::Object::HasRealIndexedProperty(unsigned int param_0) {
-  static const auto target = (bool (__thiscall*)(v8::Object*, unsigned int)) GetProcAddress(v8Module, "?HasRealIndexedProperty@Object@v8@@QAE_NI@Z");
-  return target(this, param_0);
-}
-
-int v8::Object::GetIdentityHash() {
-  static const auto target = (int (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?GetIdentityHash@Object@v8@@QAEHXZ");
-  return target(this);
-}
-
-class v8::MaybeLocal<class v8::Script> v8::Script::Compile(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::String> param_1, class v8::ScriptOrigin * param_2) {
-  static const auto target = (class v8::MaybeLocal<class v8::Script> (__cdecl*)(class v8::Local<class v8::Context>, class v8::Local<class v8::String>, class v8::ScriptOrigin *)) GetProcAddress(v8Module, "?Compile@Script@v8@@SA?AV?$MaybeLocal@VScript@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VString@v8@@@2@PAVScriptOrigin@2@@Z");
-  return target(param_0, param_1, param_2);
-}
-
-class v8::Maybe<bool> v8::Object::SetIntegrityLevel(class v8::Local<class v8::Context> param_0, enum v8::IntegrityLevel param_1) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, enum v8::IntegrityLevel)) GetProcAddress(v8Module, "?SetIntegrityLevel@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@W4IntegrityLevel@2@@Z");
-  return target(this, param_0, param_1);
-}
-
-class v8::Maybe<bool> v8::Object::SetAccessor(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1, void (__cdecl*param_2)(class v8::Local<class v8::Name>,class v8::PropertyCallbackInfo<class v8::Value> const &), void (__cdecl*param_3)(class v8::Local<class v8::Name>,class v8::Local<class v8::Value>,class v8::PropertyCallbackInfo<void> const &), class v8::MaybeLocal<class v8::Value> param_4, enum v8::AccessControl param_5, enum v8::PropertyAttribute param_6) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>, void (__cdecl*)(class v8::Local<class v8::Name>,class v8::PropertyCallbackInfo<class v8::Value> const &), void (__cdecl*)(class v8::Local<class v8::Name>,class v8::Local<class v8::Value>,class v8::PropertyCallbackInfo<void> const &), class v8::MaybeLocal<class v8::Value>, enum v8::AccessControl, enum v8::PropertyAttribute)) GetProcAddress(v8Module, "?SetAccessor@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@P6AX1ABV?$PropertyCallbackInfo@VValue@v8@@@2@@ZP6AX1V?$Local@VValue@v8@@@2@ABV?$PropertyCallbackInfo@X@2@@ZV?$MaybeLocal@VValue@v8@@@2@W4AccessControl@2@W4PropertyAttribute@2@@Z");
-  return target(this, param_0, param_1, param_2, param_3, param_4, param_5, param_6);
-}
-
-int v8::HandleScope::NumberOfHandles(class v8::Isolate * param_0) {
-  static const auto target = (int (__cdecl*)(class v8::Isolate *)) GetProcAddress(v8Module, "?NumberOfHandles@HandleScope@v8@@SAHPAVIsolate@2@@Z");
+void v8::Function::CheckCast(class v8::Value * param_0) {
+  static const auto target = (void (__cdecl*)(class v8::Value *)) GetProcAddress(v8Module, "?CheckCast@Function@v8@@CAXPAVValue@2@@Z");
   return target(param_0);
 }
 
-class v8::Local<class v8::Value> v8::Context::GetSecurityToken() {
-  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Context*)) GetProcAddress(v8Module, "?GetSecurityToken@Context@v8@@QAE?AV?$Local@VValue@v8@@@2@XZ");
+class v8::Local<class v8::Value> v8::Function::GetBoundFunction() const {
+  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(const v8::Function*)) GetProcAddress(v8Module, "?GetBoundFunction@Function@v8@@QBE?AV?$Local@VValue@v8@@@2@XZ");
   return target(this);
 }
 
-void v8::Context::SetEmbedderData(int param_0, class v8::Local<class v8::Value> param_1) {
-  static const auto target = (void (__thiscall*)(v8::Context*, int, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?SetEmbedderData@Context@v8@@QAEXHV?$Local@VValue@v8@@@2@@Z");
+class v8::Local<class v8::Value> v8::Function::GetDebugName() const {
+  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(const v8::Function*)) GetProcAddress(v8Module, "?GetDebugName@Function@v8@@QBE?AV?$Local@VValue@v8@@@2@XZ");
+  return target(this);
+}
+
+class v8::Local<class v8::Value> v8::Function::GetDisplayName() const {
+  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(const v8::Function*)) GetProcAddress(v8Module, "?GetDisplayName@Function@v8@@QBE?AV?$Local@VValue@v8@@@2@XZ");
+  return target(this);
+}
+
+class v8::Local<class v8::Value> v8::Function::GetInferredName() const {
+  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(const v8::Function*)) GetProcAddress(v8Module, "?GetInferredName@Function@v8@@QBE?AV?$Local@VValue@v8@@@2@XZ");
+  return target(this);
+}
+
+class v8::Local<class v8::Value> v8::Function::GetName() const {
+  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(const v8::Function*)) GetProcAddress(v8Module, "?GetName@Function@v8@@QBE?AV?$Local@VValue@v8@@@2@XZ");
+  return target(this);
+}
+
+int v8::Function::GetScriptColumnNumber() const {
+  static const auto target = (int (__thiscall*)(const v8::Function*)) GetProcAddress(v8Module, "?GetScriptColumnNumber@Function@v8@@QBEHXZ");
+  return target(this);
+}
+
+int v8::Function::GetScriptLineNumber() const {
+  static const auto target = (int (__thiscall*)(const v8::Function*)) GetProcAddress(v8Module, "?GetScriptLineNumber@Function@v8@@QBEHXZ");
+  return target(this);
+}
+
+class v8::ScriptOrigin v8::Function::GetScriptOrigin() const {
+  static const auto target = (class v8::ScriptOrigin (__thiscall*)(const v8::Function*)) GetProcAddress(v8Module, "?GetScriptOrigin@Function@v8@@QBE?AVScriptOrigin@2@XZ");
+  return target(this);
+}
+
+bool v8::Function::IsBuiltin() const {
+  static const auto target = (bool (__thiscall*)(const v8::Function*)) GetProcAddress(v8Module, "?IsBuiltin@Function@v8@@QBE_NXZ");
+  return target(this);
+}
+
+class v8::MaybeLocal<class v8::Function> v8::Function::New(class v8::Local<class v8::Context> param_0, void (__cdecl*param_1)(class v8::FunctionCallbackInfo<class v8::Value> const &), class v8::Local<class v8::Value> param_2, int param_3, enum v8::ConstructorBehavior param_4) {
+  static const auto target = (class v8::MaybeLocal<class v8::Function> (__cdecl*)(class v8::Local<class v8::Context>, void (__cdecl*)(class v8::FunctionCallbackInfo<class v8::Value> const &), class v8::Local<class v8::Value>, int, enum v8::ConstructorBehavior)) GetProcAddress(v8Module, "?New@Function@v8@@SA?AV?$MaybeLocal@VFunction@v8@@@2@V?$Local@VContext@v8@@@2@P6AXABV?$FunctionCallbackInfo@VValue@v8@@@2@@ZV?$Local@VValue@v8@@@2@HW4ConstructorBehavior@2@@Z");
+  return target(param_0, param_1, param_2, param_3, param_4);
+}
+
+class v8::Local<class v8::Function> v8::Function::New(class v8::Isolate * param_0, void (__cdecl*param_1)(class v8::FunctionCallbackInfo<class v8::Value> const &), class v8::Local<class v8::Value> param_2, int param_3) {
+  static const auto target = (class v8::Local<class v8::Function> (__cdecl*)(class v8::Isolate *, void (__cdecl*)(class v8::FunctionCallbackInfo<class v8::Value> const &), class v8::Local<class v8::Value>, int)) GetProcAddress(v8Module, "?New@Function@v8@@SA?AV?$Local@VFunction@v8@@@2@PAVIsolate@2@P6AXABV?$FunctionCallbackInfo@VValue@v8@@@2@@ZV?$Local@VValue@v8@@@2@H@Z");
+  return target(param_0, param_1, param_2, param_3);
+}
+
+class v8::MaybeLocal<class v8::Object> v8::Function::NewInstance(class v8::Local<class v8::Context> param_0, int param_1, class v8::Local<class v8::Value> * const param_2) const {
+  static const auto target = (class v8::MaybeLocal<class v8::Object> (__thiscall*)(const v8::Function*, class v8::Local<class v8::Context>, int, class v8::Local<class v8::Value> * const)) GetProcAddress(v8Module, "?NewInstance@Function@v8@@QBE?AV?$MaybeLocal@VObject@v8@@@2@V?$Local@VContext@v8@@@2@HQAV?$Local@VValue@v8@@@2@@Z");
+  return target(this, param_0, param_1, param_2);
+}
+
+class v8::Local<class v8::Object> v8::Function::NewInstance() const {
+  static const auto target = (class v8::Local<class v8::Object> (__thiscall*)(const v8::Function*)) GetProcAddress(v8Module, "?NewInstance@Function@v8@@QBE?AV?$Local@VObject@v8@@@2@XZ");
+  return target(this);
+}
+
+class v8::Local<class v8::Object> v8::Function::NewInstance(int param_0, class v8::Local<class v8::Value> * const param_1) const {
+  static const auto target = (class v8::Local<class v8::Object> (__thiscall*)(const v8::Function*, int, class v8::Local<class v8::Value> * const)) GetProcAddress(v8Module, "?NewInstance@Function@v8@@QBE?AV?$Local@VObject@v8@@@2@HQAV?$Local@VValue@v8@@@2@@Z");
   return target(this, param_0, param_1);
 }
 
-class v8::Local<class v8::Object> v8::Context::Global() {
-  static const auto target = (class v8::Local<class v8::Object> (__thiscall*)(v8::Context*)) GetProcAddress(v8Module, "?Global@Context@v8@@QAE?AV?$Local@VObject@v8@@@2@XZ");
+int v8::Function::ScriptId() const {
+  static const auto target = (int (__thiscall*)(const v8::Function*)) GetProcAddress(v8Module, "?ScriptId@Function@v8@@QBEHXZ");
   return target(this);
 }
 
@@ -365,323 +200,38 @@ void v8::Function::SetName(class v8::Local<class v8::String> param_0) {
   return target(this, param_0);
 }
 
-class v8::MaybeLocal<class v8::Object> v8::Context::NewRemoteContext(class v8::Isolate * param_0, class v8::Local<class v8::ObjectTemplate> param_1, class v8::MaybeLocal<class v8::Value> param_2) {
-  static const auto target = (class v8::MaybeLocal<class v8::Object> (__cdecl*)(class v8::Isolate *, class v8::Local<class v8::ObjectTemplate>, class v8::MaybeLocal<class v8::Value>)) GetProcAddress(v8Module, "?NewRemoteContext@Context@v8@@SA?AV?$MaybeLocal@VObject@v8@@@2@PAVIsolate@2@V?$Local@VObjectTemplate@v8@@@2@V?$MaybeLocal@VValue@v8@@@2@@Z");
-  return target(param_0, param_1, param_2);
-}
-
-class v8::Local<class v8::Value> v8::Object::CallAsConstructor(int param_0, class v8::Local<class v8::Value> * const param_1) {
-  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Object*, int, class v8::Local<class v8::Value> * const)) GetProcAddress(v8Module, "?CallAsConstructor@Object@v8@@QAE?AV?$Local@VValue@v8@@@2@HQAV32@@Z");
-  return target(this, param_0, param_1);
-}
-
-class v8::MaybeLocal<class v8::Array> v8::Object::GetPropertyNames(class v8::Local<class v8::Context> param_0) {
-  static const auto target = (class v8::MaybeLocal<class v8::Array> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>)) GetProcAddress(v8Module, "?GetPropertyNames@Object@v8@@QAE?AV?$MaybeLocal@VArray@v8@@@2@V?$Local@VContext@v8@@@2@@Z");
-  return target(this, param_0);
-}
-
-void v8::Context::SetAlignedPointerInEmbedderData(int param_0, void * param_1) {
-  static const auto target = (void (__thiscall*)(v8::Context*, int, void *)) GetProcAddress(v8Module, "?SetAlignedPointerInEmbedderData@Context@v8@@QAEXHPAX@Z");
-  return target(this, param_0, param_1);
-}
-
-class v8::MaybeLocal<class v8::Array> v8::Object::GetOwnPropertyNames(class v8::Local<class v8::Context> param_0, enum v8::PropertyFilter param_1) {
-  static const auto target = (class v8::MaybeLocal<class v8::Array> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, enum v8::PropertyFilter)) GetProcAddress(v8Module, "?GetOwnPropertyNames@Object@v8@@QAE?AV?$MaybeLocal@VArray@v8@@@2@V?$Local@VContext@v8@@@2@W4PropertyFilter@2@@Z");
-  return target(this, param_0, param_1);
-}
-
-class v8::Isolate * v8::Context::GetIsolate() {
-  static const auto target = (class v8::Isolate * (__thiscall*)(v8::Context*)) GetProcAddress(v8Module, "?GetIsolate@Context@v8@@QAEPAVIsolate@2@XZ");
-  return target(this);
-}
-
-v8::String::Utf8Value::~Utf8Value() {
-  static const auto target = (void (__thiscall*)(v8::String::Utf8Value*)) GetProcAddress(v8Module, "??1Utf8Value@String@v8@@QAE@XZ");
-  target(this);
-}
-
-void v8::Object::SetAccessorProperty(class v8::Local<class v8::Name> param_0, class v8::Local<class v8::Function> param_1, class v8::Local<class v8::Function> param_2, enum v8::PropertyAttribute param_3, enum v8::AccessControl param_4) {
-  static const auto target = (void (__thiscall*)(v8::Object*, class v8::Local<class v8::Name>, class v8::Local<class v8::Function>, class v8::Local<class v8::Function>, enum v8::PropertyAttribute, enum v8::AccessControl)) GetProcAddress(v8Module, "?SetAccessorProperty@Object@v8@@QAEXV?$Local@VName@v8@@@2@V?$Local@VFunction@v8@@@2@1W4PropertyAttribute@2@W4AccessControl@2@@Z");
-  return target(this, param_0, param_1, param_2, param_3, param_4);
-}
-
-class v8::Maybe<bool> v8::Object::CreateDataProperty(class v8::Local<class v8::Context> param_0, unsigned int param_1, class v8::Local<class v8::Value> param_2) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, unsigned int, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?CreateDataProperty@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@IV?$Local@VValue@v8@@@2@@Z");
-  return target(this, param_0, param_1, param_2);
-}
-
-bool v8::Object::Delete(unsigned int param_0) {
-  static const auto target = (bool (__thiscall*)(v8::Object*, unsigned int)) GetProcAddress(v8Module, "?Delete@Object@v8@@QAE_NI@Z");
-  return target(this, param_0);
-}
-
-void v8::Object::CheckCast(class v8::Value * param_0) {
-  static const auto target = (void (__cdecl*)(class v8::Value *)) GetProcAddress(v8Module, "?CheckCast@Object@v8@@CAXPAVValue@2@@Z");
-  return target(param_0);
-}
-
-class v8::Maybe<bool> v8::Object::Set(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Value> param_1, class v8::Local<class v8::Value> param_2) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Value>, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?Set@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VValue@v8@@@2@1@Z");
-  return target(this, param_0, param_1, param_2);
-}
-
-void v8::Context::SetErrorMessageForCodeGenerationFromStrings(class v8::Local<class v8::String> param_0) {
-  static const auto target = (void (__thiscall*)(v8::Context*, class v8::Local<class v8::String>)) GetProcAddress(v8Module, "?SetErrorMessageForCodeGenerationFromStrings@Context@v8@@QAEXV?$Local@VString@v8@@@2@@Z");
-  return target(this, param_0);
-}
-
-class v8::MaybeLocal<class v8::Context> v8::Context::FromSnapshot(class v8::Isolate * param_0, unsigned int param_1, struct v8::DeserializeInternalFieldsCallback param_2, class v8::ExtensionConfiguration * param_3, class v8::MaybeLocal<class v8::Value> param_4) {
-  static const auto target = (class v8::MaybeLocal<class v8::Context> (__cdecl*)(class v8::Isolate *, unsigned int, struct v8::DeserializeInternalFieldsCallback, class v8::ExtensionConfiguration *, class v8::MaybeLocal<class v8::Value>)) GetProcAddress(v8Module, "?FromSnapshot@Context@v8@@SA?AV?$MaybeLocal@VContext@v8@@@2@PAVIsolate@2@IUDeserializeInternalFieldsCallback@2@PAVExtensionConfiguration@2@V?$MaybeLocal@VValue@v8@@@2@@Z");
-  return target(param_0, param_1, param_2, param_3, param_4);
-}
-
-class v8::Maybe<bool> v8::Object::Has(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Value> param_1) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?Has@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VValue@v8@@@2@@Z");
-  return target(this, param_0, param_1);
-}
-
-class v8::MaybeLocal<class v8::Value> v8::Object::Get(class v8::Local<class v8::Context> param_0, unsigned int param_1) {
-  static const auto target = (class v8::MaybeLocal<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, unsigned int)) GetProcAddress(v8Module, "?Get@Object@v8@@QAE?AV?$MaybeLocal@VValue@v8@@@2@V?$Local@VContext@v8@@@2@I@Z");
-  return target(this, param_0, param_1);
-}
-
-class v8::Maybe<bool> v8::Object::HasRealIndexedProperty(class v8::Local<class v8::Context> param_0, unsigned int param_1) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, unsigned int)) GetProcAddress(v8Module, "?HasRealIndexedProperty@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@I@Z");
-  return target(this, param_0, param_1);
-}
-
-class v8::Maybe<bool> v8::Object::HasPrivate(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Private> param_1) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Private>)) GetProcAddress(v8Module, "?HasPrivate@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VPrivate@v8@@@2@@Z");
-  return target(this, param_0, param_1);
-}
-
-void v8::TryCatch::SetCaptureMessage(bool param_0) {
-  static const auto target = (void (__thiscall*)(v8::TryCatch*, bool)) GetProcAddress(v8Module, "?SetCaptureMessage@TryCatch@v8@@QAEX_N@Z");
-  return target(this, param_0);
-}
-
-class v8::Maybe<bool> v8::Object::DefineOwnProperty(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1, class v8::Local<class v8::Value> param_2, enum v8::PropertyAttribute param_3) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>, class v8::Local<class v8::Value>, enum v8::PropertyAttribute)) GetProcAddress(v8Module, "?DefineOwnProperty@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@V?$Local@VValue@v8@@@2@W4PropertyAttribute@2@@Z");
-  return target(this, param_0, param_1, param_2, param_3);
-}
-
-class v8::Maybe<bool> v8::Object::HasRealNamedProperty(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>)) GetProcAddress(v8Module, "?HasRealNamedProperty@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@@Z");
-  return target(this, param_0, param_1);
-}
-
-class v8::MaybeLocal<class v8::String> v8::String::NewFromUtf8(class v8::Isolate * param_0, char const * param_1, enum v8::NewStringType param_2, int param_3) {
-  static const auto target = (class v8::MaybeLocal<class v8::String> (__cdecl*)(class v8::Isolate *, char const *, enum v8::NewStringType, int)) GetProcAddress(v8Module, "?NewFromUtf8@String@v8@@SA?AV?$MaybeLocal@VString@v8@@@2@PAVIsolate@2@PBDW4NewStringType@2@H@Z");
-  return target(param_0, param_1, param_2, param_3);
-}
-
-class v8::MaybeLocal<class v8::Value> v8::Object::GetRealNamedPropertyInPrototypeChain(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1) {
-  static const auto target = (class v8::MaybeLocal<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>)) GetProcAddress(v8Module, "?GetRealNamedPropertyInPrototypeChain@Object@v8@@QAE?AV?$MaybeLocal@VValue@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@@Z");
-  return target(this, param_0, param_1);
-}
-
-bool v8::TryCatch::HasCaught() const {
-  static const auto target = (bool (__thiscall*)(const v8::TryCatch*)) GetProcAddress(v8Module, "?HasCaught@TryCatch@v8@@QBE_NXZ");
-  return target(this);
-}
-
-class v8::Local<class v8::Value> v8::Object::GetPrototype() {
-  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?GetPrototype@Object@v8@@QAE?AV?$Local@VValue@v8@@@2@XZ");
-  return target(this);
-}
-
-class v8::Local<class v8::Value> v8::Context::SlowGetEmbedderData(int param_0) {
-  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Context*, int)) GetProcAddress(v8Module, "?SlowGetEmbedderData@Context@v8@@AAE?AV?$Local@VValue@v8@@@2@H@Z");
-  return target(this, param_0);
-}
-
-class v8::Maybe<bool> v8::Object::HasOwnProperty(class v8::Local<class v8::Context> param_0, unsigned int param_1) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, unsigned int)) GetProcAddress(v8Module, "?HasOwnProperty@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@I@Z");
-  return target(this, param_0, param_1);
-}
-
-class v8::Local<class v8::Value> v8::Function::Call(class v8::Local<class v8::Value> param_0, int param_1, class v8::Local<class v8::Value> * const param_2) {
-  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Function*, class v8::Local<class v8::Value>, int, class v8::Local<class v8::Value> * const)) GetProcAddress(v8Module, "?Call@Function@v8@@QAE?AV?$Local@VValue@v8@@@2@V32@HQAV32@@Z");
-  return target(this, param_0, param_1, param_2);
-}
-
-class v8::MaybeLocal<class v8::Value> v8::Object::Get(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Value> param_1) {
-  static const auto target = (class v8::MaybeLocal<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?Get@Object@v8@@QAE?AV?$MaybeLocal@VValue@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VValue@v8@@@2@@Z");
-  return target(this, param_0, param_1);
-}
-
-class v8::MaybeLocal<class v8::Array> v8::Object::GetPropertyNames(class v8::Local<class v8::Context> param_0, enum v8::KeyCollectionMode param_1, enum v8::PropertyFilter param_2, enum v8::IndexFilter param_3) {
-  static const auto target = (class v8::MaybeLocal<class v8::Array> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, enum v8::KeyCollectionMode, enum v8::PropertyFilter, enum v8::IndexFilter)) GetProcAddress(v8Module, "?GetPropertyNames@Object@v8@@QAE?AV?$MaybeLocal@VArray@v8@@@2@V?$Local@VContext@v8@@@2@W4KeyCollectionMode@2@W4PropertyFilter@2@W4IndexFilter@2@@Z");
-  return target(this, param_0, param_1, param_2, param_3);
-}
-
-class v8::Local<class v8::Value> v8::Object::GetRealNamedPropertyInPrototypeChain(class v8::Local<class v8::String> param_0) {
-  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::String>)) GetProcAddress(v8Module, "?GetRealNamedPropertyInPrototypeChain@Object@v8@@QAE?AV?$Local@VValue@v8@@@2@V?$Local@VString@v8@@@2@@Z");
-  return target(this, param_0);
-}
-
-class v8::Local<class v8::Value> v8::Object::CallAsFunction(class v8::Local<class v8::Value> param_0, int param_1, class v8::Local<class v8::Value> * const param_2) {
-  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::Value>, int, class v8::Local<class v8::Value> * const)) GetProcAddress(v8Module, "?CallAsFunction@Object@v8@@QAE?AV?$Local@VValue@v8@@@2@V32@HQAV32@@Z");
-  return target(this, param_0, param_1, param_2);
-}
-
-class v8::Local<class v8::String> v8::Object::GetConstructorName() {
-  static const auto target = (class v8::Local<class v8::String> (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?GetConstructorName@Object@v8@@QAE?AV?$Local@VString@v8@@@2@XZ");
-  return target(this);
-}
-
-void v8::TryCatch::Reset() {
-  static const auto target = (void (__thiscall*)(v8::TryCatch*)) GetProcAddress(v8Module, "?Reset@TryCatch@v8@@QAEXXZ");
-  return target(this);
-}
-
-bool v8::Object::SetAccessor(class v8::Local<class v8::Name> param_0, void (__cdecl*param_1)(class v8::Local<class v8::Name>,class v8::PropertyCallbackInfo<class v8::Value> const &), void (__cdecl*param_2)(class v8::Local<class v8::Name>,class v8::Local<class v8::Value>,class v8::PropertyCallbackInfo<void> const &), class v8::Local<class v8::Value> param_3, enum v8::AccessControl param_4, enum v8::PropertyAttribute param_5) {
-  static const auto target = (bool (__thiscall*)(v8::Object*, class v8::Local<class v8::Name>, void (__cdecl*)(class v8::Local<class v8::Name>,class v8::PropertyCallbackInfo<class v8::Value> const &), void (__cdecl*)(class v8::Local<class v8::Name>,class v8::Local<class v8::Value>,class v8::PropertyCallbackInfo<void> const &), class v8::Local<class v8::Value>, enum v8::AccessControl, enum v8::PropertyAttribute)) GetProcAddress(v8Module, "?SetAccessor@Object@v8@@QAE_NV?$Local@VName@v8@@@2@P6AX0ABV?$PropertyCallbackInfo@VValue@v8@@@2@@ZP6AX0V?$Local@VValue@v8@@@2@ABV?$PropertyCallbackInfo@X@2@@Z3W4AccessControl@2@W4PropertyAttribute@2@@Z");
-  return target(this, param_0, param_1, param_2, param_3, param_4, param_5);
-}
-
-void v8::Context::Enter() {
-  static const auto target = (void (__thiscall*)(v8::Context*)) GetProcAddress(v8Module, "?Enter@Context@v8@@QAEXXZ");
-  return target(this);
-}
-
-class v8::Maybe<bool> v8::Object::Delete(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Value> param_1) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?Delete@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VValue@v8@@@2@@Z");
-  return target(this, param_0, param_1);
-}
-
-bool v8::Object::IsCallable() {
-  static const auto target = (bool (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?IsCallable@Object@v8@@QAE_NXZ");
-  return target(this);
-}
-
-int v8::Object::InternalFieldCount() {
-  static const auto target = (int (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?InternalFieldCount@Object@v8@@QAEHXZ");
-  return target(this);
-}
-
-bool v8::Object::HasRealNamedProperty(class v8::Local<class v8::String> param_0) {
-  static const auto target = (bool (__thiscall*)(v8::Object*, class v8::Local<class v8::String>)) GetProcAddress(v8Module, "?HasRealNamedProperty@Object@v8@@QAE_NV?$Local@VString@v8@@@2@@Z");
-  return target(this, param_0);
-}
-
-class v8::Local<class v8::Script> v8::Script::Compile(class v8::Local<class v8::String> param_0, class v8::Local<class v8::String> param_1) {
-  static const auto target = (class v8::Local<class v8::Script> (__cdecl*)(class v8::Local<class v8::String>, class v8::Local<class v8::String>)) GetProcAddress(v8Module, "?Compile@Script@v8@@SA?AV?$Local@VScript@v8@@@2@V?$Local@VString@v8@@@2@0@Z");
-  return target(param_0, param_1);
-}
-
-class v8::Maybe<enum v8::PropertyAttribute> v8::Object::GetPropertyAttributes(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Value> param_1) {
-  static const auto target = (class v8::Maybe<enum v8::PropertyAttribute> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?GetPropertyAttributes@Object@v8@@QAE?AV?$Maybe@W4PropertyAttribute@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VValue@v8@@@2@@Z");
-  return target(this, param_0, param_1);
-}
-
-class v8::Maybe<enum v8::PropertyAttribute> v8::Object::GetRealNamedPropertyAttributesInPrototypeChain(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1) {
-  static const auto target = (class v8::Maybe<enum v8::PropertyAttribute> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>)) GetProcAddress(v8Module, "?GetRealNamedPropertyAttributesInPrototypeChain@Object@v8@@QAE?AV?$Maybe@W4PropertyAttribute@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@@Z");
-  return target(this, param_0, param_1);
-}
-
-class v8::Local<class v8::Value> v8::TryCatch::ReThrow() {
-  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::TryCatch*)) GetProcAddress(v8Module, "?ReThrow@TryCatch@v8@@QAE?AV?$Local@VValue@v8@@@2@XZ");
-  return target(this);
-}
-
-class v8::Maybe<bool> v8::Object::ForceSet(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Value> param_1, class v8::Local<class v8::Value> param_2, enum v8::PropertyAttribute param_3) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Value>, class v8::Local<class v8::Value>, enum v8::PropertyAttribute)) GetProcAddress(v8Module, "?ForceSet@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VValue@v8@@@2@1W4PropertyAttribute@2@@Z");
-  return target(this, param_0, param_1, param_2, param_3);
-}
-
-v8::String::Utf8Value::Utf8Value(class v8::Local<class v8::Value> param_0) {
-  static const auto target = (void (__thiscall*)(v8::String::Utf8Value*, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "??0Utf8Value@String@v8@@QAE@V?$Local@VValue@v8@@@2@@Z");
-  target(this, param_0);
-}
-
-bool v8::Object::Delete(class v8::Local<class v8::Value> param_0) {
-  static const auto target = (bool (__thiscall*)(v8::Object*, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?Delete@Object@v8@@QAE_NV?$Local@VValue@v8@@@2@@Z");
-  return target(this, param_0);
-}
-
-bool v8::Object::SetPrototype(class v8::Local<class v8::Value> param_0) {
-  static const auto target = (bool (__thiscall*)(v8::Object*, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?SetPrototype@Object@v8@@QAE_NV?$Local@VValue@v8@@@2@@Z");
-  return target(this, param_0);
-}
-
-class v8::Maybe<bool> v8::Object::Delete(class v8::Local<class v8::Context> param_0, unsigned int param_1) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, unsigned int)) GetProcAddress(v8Module, "?Delete@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@I@Z");
-  return target(this, param_0, param_1);
-}
-
-class v8::Local<class v8::Function> v8::Function::New(class v8::Isolate * param_0, void (__cdecl*param_1)(class v8::FunctionCallbackInfo<class v8::Value> const &), class v8::Local<class v8::Value> param_2, int param_3) {
-  static const auto target = (class v8::Local<class v8::Function> (__cdecl*)(class v8::Isolate *, void (__cdecl*)(class v8::FunctionCallbackInfo<class v8::Value> const &), class v8::Local<class v8::Value>, int)) GetProcAddress(v8Module, "?New@Function@v8@@SA?AV?$Local@VFunction@v8@@@2@PAVIsolate@2@P6AXABV?$FunctionCallbackInfo@VValue@v8@@@2@@ZV?$Local@VValue@v8@@@2@H@Z");
-  return target(param_0, param_1, param_2, param_3);
-}
-
-class v8::Maybe<bool> v8::Object::Set(class v8::Local<class v8::Context> param_0, unsigned int param_1, class v8::Local<class v8::Value> param_2) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, unsigned int, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?Set@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@IV?$Local@VValue@v8@@@2@@Z");
-  return target(this, param_0, param_1, param_2);
-}
-
 class v8::internal::Object * * v8::HandleScope::CreateHandle(class v8::internal::Isolate * param_0, class v8::internal::Object * param_1) {
   static const auto target = (class v8::internal::Object * * (__cdecl*)(class v8::internal::Isolate *, class v8::internal::Object *)) GetProcAddress(v8Module, "?CreateHandle@HandleScope@v8@@KAPAPAVObject@internal@2@PAVIsolate@42@PAV342@@Z");
   return target(param_0, param_1);
 }
 
-class v8::MaybeLocal<class v8::Function> v8::Function::New(class v8::Local<class v8::Context> param_0, void (__cdecl*param_1)(class v8::FunctionCallbackInfo<class v8::Value> const &), class v8::Local<class v8::Value> param_2, int param_3, enum v8::ConstructorBehavior param_4) {
-  static const auto target = (class v8::MaybeLocal<class v8::Function> (__cdecl*)(class v8::Local<class v8::Context>, void (__cdecl*)(class v8::FunctionCallbackInfo<class v8::Value> const &), class v8::Local<class v8::Value>, int, enum v8::ConstructorBehavior)) GetProcAddress(v8Module, "?New@Function@v8@@SA?AV?$MaybeLocal@VFunction@v8@@@2@V?$Local@VContext@v8@@@2@P6AXABV?$FunctionCallbackInfo@VValue@v8@@@2@@ZV?$Local@VValue@v8@@@2@HW4ConstructorBehavior@2@@Z");
-  return target(param_0, param_1, param_2, param_3, param_4);
-}
-
-bool v8::Context::IsCodeGenerationFromStringsAllowed() {
-  static const auto target = (bool (__thiscall*)(v8::Context*)) GetProcAddress(v8Module, "?IsCodeGenerationFromStringsAllowed@Context@v8@@QAE_NXZ");
-  return target(this);
-}
-
-void v8::TryCatch::SetVerbose(bool param_0) {
-  static const auto target = (void (__thiscall*)(v8::TryCatch*, bool)) GetProcAddress(v8Module, "?SetVerbose@TryCatch@v8@@QAEX_N@Z");
-  return target(this, param_0);
-}
-
-class v8::Maybe<bool> v8::Object::SetNativeDataProperty(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1, void (__cdecl*param_2)(class v8::Local<class v8::Name>,class v8::PropertyCallbackInfo<class v8::Value> const &), void (__cdecl*param_3)(class v8::Local<class v8::Name>,class v8::Local<class v8::Value>,class v8::PropertyCallbackInfo<void> const &), class v8::Local<class v8::Value> param_4, enum v8::PropertyAttribute param_5) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>, void (__cdecl*)(class v8::Local<class v8::Name>,class v8::PropertyCallbackInfo<class v8::Value> const &), void (__cdecl*)(class v8::Local<class v8::Name>,class v8::Local<class v8::Value>,class v8::PropertyCallbackInfo<void> const &), class v8::Local<class v8::Value>, enum v8::PropertyAttribute)) GetProcAddress(v8Module, "?SetNativeDataProperty@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@P6AX1ABV?$PropertyCallbackInfo@VValue@v8@@@2@@ZP6AX1V?$Local@VValue@v8@@@2@ABV?$PropertyCallbackInfo@X@2@@Z4W4PropertyAttribute@2@@Z");
-  return target(this, param_0, param_1, param_2, param_3, param_4, param_5);
-}
-
-class v8::Maybe<bool> v8::Object::CreateDataProperty(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1, class v8::Local<class v8::Value> param_2) {
-  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?CreateDataProperty@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@V?$Local@VValue@v8@@@2@@Z");
-  return target(this, param_0, param_1, param_2);
-}
-
-class v8::Local<class v8::Value> v8::Object::GetOwnPropertyDescriptor(class v8::Local<class v8::Name> param_0) {
-  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::Name>)) GetProcAddress(v8Module, "?GetOwnPropertyDescriptor@Object@v8@@QAE?AV?$Local@VValue@v8@@@2@V?$Local@VName@v8@@@2@@Z");
-  return target(this, param_0);
-}
-
-class v8::Local<class v8::Script> v8::Script::Compile(class v8::Local<class v8::String> param_0, class v8::ScriptOrigin * param_1) {
-  static const auto target = (class v8::Local<class v8::Script> (__cdecl*)(class v8::Local<class v8::String>, class v8::ScriptOrigin *)) GetProcAddress(v8Module, "?Compile@Script@v8@@SA?AV?$Local@VScript@v8@@@2@V?$Local@VString@v8@@@2@PAVScriptOrigin@2@@Z");
+class v8::internal::Object * * v8::HandleScope::CreateHandle(class v8::internal::HeapObject * param_0, class v8::internal::Object * param_1) {
+  static const auto target = (class v8::internal::Object * * (__cdecl*)(class v8::internal::HeapObject *, class v8::internal::Object *)) GetProcAddress(v8Module, "?CreateHandle@HandleScope@v8@@CAPAPAVObject@internal@2@PAVHeapObject@42@PAV342@@Z");
   return target(param_0, param_1);
 }
 
-class v8::Maybe<enum v8::PropertyAttribute> v8::Object::GetRealNamedPropertyAttributes(class v8::Local<class v8::String> param_0) {
-  static const auto target = (class v8::Maybe<enum v8::PropertyAttribute> (__thiscall*)(v8::Object*, class v8::Local<class v8::String>)) GetProcAddress(v8Module, "?GetRealNamedPropertyAttributes@Object@v8@@QAE?AV?$Maybe@W4PropertyAttribute@v8@@@2@V?$Local@VString@v8@@@2@@Z");
+v8::HandleScope::HandleScope(class v8::Isolate * param_0) {
+  static const auto target = (void (__thiscall*)(v8::HandleScope*, class v8::Isolate *)) GetProcAddress(v8Module, "??0HandleScope@v8@@QAE@PAVIsolate@1@@Z");
+  target(this, param_0);
+}
+
+void v8::HandleScope::Initialize(class v8::Isolate * param_0) {
+  static const auto target = (void (__thiscall*)(v8::HandleScope*, class v8::Isolate *)) GetProcAddress(v8Module, "?Initialize@HandleScope@v8@@IAEXPAVIsolate@2@@Z");
   return target(this, param_0);
 }
 
-class v8::MaybeLocal<class v8::Value> v8::Object::GetPrivate(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Private> param_1) {
-  static const auto target = (class v8::MaybeLocal<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Private>)) GetProcAddress(v8Module, "?GetPrivate@Object@v8@@QAE?AV?$MaybeLocal@VValue@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VPrivate@v8@@@2@@Z");
-  return target(this, param_0, param_1);
-}
-
-bool v8::Object::Has(unsigned int param_0) {
-  static const auto target = (bool (__thiscall*)(v8::Object*, unsigned int)) GetProcAddress(v8Module, "?Has@Object@v8@@QAE_NI@Z");
-  return target(this, param_0);
-}
-
-class v8::Local<class v8::Object> v8::Object::New(class v8::Isolate * param_0) {
-  static const auto target = (class v8::Local<class v8::Object> (__cdecl*)(class v8::Isolate *)) GetProcAddress(v8Module, "?New@Object@v8@@SA?AV?$Local@VObject@v8@@@2@PAVIsolate@2@@Z");
+int v8::HandleScope::NumberOfHandles(class v8::Isolate * param_0) {
+  static const auto target = (int (__cdecl*)(class v8::Isolate *)) GetProcAddress(v8Module, "?NumberOfHandles@HandleScope@v8@@SAHPAVIsolate@2@@Z");
   return target(param_0);
 }
 
-void v8::Function::CheckCast(class v8::Value * param_0) {
-  static const auto target = (void (__cdecl*)(class v8::Value *)) GetProcAddress(v8Module, "?CheckCast@Function@v8@@CAXPAVValue@2@@Z");
+void v8::HandleScope::operator delete(void * param_0, unsigned int param_1) {
+  static const auto target = (void (__cdecl*)(void *, unsigned int)) GetProcAddress(v8Module, "??3HandleScope@v8@@SAXPAXI@Z");
+  return target(param_0, param_1);
+}
+
+void * v8::HandleScope::operator new(unsigned int param_0) {
+  static const auto target = (void * (__cdecl*)(unsigned int)) GetProcAddress(v8Module, "??2HandleScope@v8@@SAPAXI@Z");
   return target(param_0);
 }
 
@@ -690,3 +240,1232 @@ v8::HandleScope::~HandleScope() {
   target(this);
 }
 
+void v8::Isolate::AddBeforeCallEnteredCallback(void (__cdecl*param_0)(class v8::Isolate *)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(class v8::Isolate *))) GetProcAddress(v8Module, "?AddBeforeCallEnteredCallback@Isolate@v8@@QAEXP6AXPAV12@@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::AddCallCompletedCallback(void (__cdecl*param_0)(class v8::Isolate *)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(class v8::Isolate *))) GetProcAddress(v8Module, "?AddCallCompletedCallback@Isolate@v8@@QAEXP6AXPAV12@@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::AddCallCompletedCallback(void (__cdecl*param_0)(void)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(void))) GetProcAddress(v8Module, "?AddCallCompletedCallback@Isolate@v8@@QAEXP6AXXZ@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::AddGCEpilogueCallback(void (__cdecl*param_0)(class v8::Isolate *,enum v8::GCType,enum v8::GCCallbackFlags), enum v8::GCType param_1) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(class v8::Isolate *,enum v8::GCType,enum v8::GCCallbackFlags), enum v8::GCType)) GetProcAddress(v8Module, "?AddGCEpilogueCallback@Isolate@v8@@QAEXP6AXPAV12@W4GCType@2@W4GCCallbackFlags@2@@Z1@Z");
+  return target(this, param_0, param_1);
+}
+
+void v8::Isolate::AddGCPrologueCallback(void (__cdecl*param_0)(class v8::Isolate *,enum v8::GCType,enum v8::GCCallbackFlags), enum v8::GCType param_1) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(class v8::Isolate *,enum v8::GCType,enum v8::GCCallbackFlags), enum v8::GCType)) GetProcAddress(v8Module, "?AddGCPrologueCallback@Isolate@v8@@QAEXP6AXPAV12@W4GCType@2@W4GCCallbackFlags@2@@Z1@Z");
+  return target(this, param_0, param_1);
+}
+
+bool v8::Isolate::AddMessageListener(void (__cdecl*param_0)(class v8::Local<class v8::Message>,class v8::Local<class v8::Value>), class v8::Local<class v8::Value> param_1) {
+  static const auto target = (bool (__thiscall*)(v8::Isolate*, void (__cdecl*)(class v8::Local<class v8::Message>,class v8::Local<class v8::Value>), class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?AddMessageListener@Isolate@v8@@QAE_NP6AXV?$Local@VMessage@v8@@@2@V?$Local@VValue@v8@@@2@@Z1@Z");
+  return target(this, param_0, param_1);
+}
+
+bool v8::Isolate::AddMessageListenerWithErrorLevel(void (__cdecl*param_0)(class v8::Local<class v8::Message>,class v8::Local<class v8::Value>), int param_1, class v8::Local<class v8::Value> param_2) {
+  static const auto target = (bool (__thiscall*)(v8::Isolate*, void (__cdecl*)(class v8::Local<class v8::Message>,class v8::Local<class v8::Value>), int, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?AddMessageListenerWithErrorLevel@Isolate@v8@@QAE_NP6AXV?$Local@VMessage@v8@@@2@V?$Local@VValue@v8@@@2@@ZH1@Z");
+  return target(this, param_0, param_1, param_2);
+}
+
+void v8::Isolate::AddMicrotasksCompletedCallback(void (__cdecl*param_0)(class v8::Isolate *)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(class v8::Isolate *))) GetProcAddress(v8Module, "?AddMicrotasksCompletedCallback@Isolate@v8@@QAEXP6AXPAV12@@Z@Z");
+  return target(this, param_0);
+}
+
+v8::Isolate::AllowJavascriptExecutionScope::AllowJavascriptExecutionScope(class v8::Isolate * param_0) {
+  static const auto target = (void (__thiscall*)(v8::Isolate::AllowJavascriptExecutionScope*, class v8::Isolate *)) GetProcAddress(v8Module, "??0AllowJavascriptExecutionScope@Isolate@v8@@QAE@PAV12@@Z");
+  target(this, param_0);
+}
+
+v8::Isolate::AllowJavascriptExecutionScope::~AllowJavascriptExecutionScope() {
+  static const auto target = (void (__thiscall*)(v8::Isolate::AllowJavascriptExecutionScope*)) GetProcAddress(v8Module, "??1AllowJavascriptExecutionScope@Isolate@v8@@QAE@XZ");
+  target(this);
+}
+
+void v8::Isolate::CancelTerminateExecution() {
+  static const auto target = (void (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?CancelTerminateExecution@Isolate@v8@@QAEXXZ");
+  return target(this);
+}
+
+int v8::Isolate::ContextDisposedNotification(bool param_0) {
+  static const auto target = (int (__thiscall*)(v8::Isolate*, bool)) GetProcAddress(v8Module, "?ContextDisposedNotification@Isolate@v8@@QAEH_N@Z");
+  return target(this, param_0);
+}
+
+v8::Isolate::DisallowJavascriptExecutionScope::DisallowJavascriptExecutionScope(class v8::Isolate * param_0, enum v8::Isolate::DisallowJavascriptExecutionScope::OnFailure param_1) {
+  static const auto target = (void (__thiscall*)(v8::Isolate::DisallowJavascriptExecutionScope*, class v8::Isolate *, enum v8::Isolate::DisallowJavascriptExecutionScope::OnFailure)) GetProcAddress(v8Module, "??0DisallowJavascriptExecutionScope@Isolate@v8@@QAE@PAV12@W4OnFailure@012@@Z");
+  target(this, param_0, param_1);
+}
+
+v8::Isolate::DisallowJavascriptExecutionScope::~DisallowJavascriptExecutionScope() {
+  static const auto target = (void (__thiscall*)(v8::Isolate::DisallowJavascriptExecutionScope*)) GetProcAddress(v8Module, "??1DisallowJavascriptExecutionScope@Isolate@v8@@QAE@XZ");
+  target(this);
+}
+
+void v8::Isolate::DiscardThreadSpecificMetadata() {
+  static const auto target = (void (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?DiscardThreadSpecificMetadata@Isolate@v8@@QAEXXZ");
+  return target(this);
+}
+
+void v8::Isolate::Dispose() {
+  static const auto target = (void (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?Dispose@Isolate@v8@@QAEXXZ");
+  return target(this);
+}
+
+void v8::Isolate::DumpAndResetStats() {
+  static const auto target = (void (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?DumpAndResetStats@Isolate@v8@@QAEXXZ");
+  return target(this);
+}
+
+void v8::Isolate::EnqueueMicrotask(class v8::Local<class v8::Function> param_0) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, class v8::Local<class v8::Function>)) GetProcAddress(v8Module, "?EnqueueMicrotask@Isolate@v8@@QAEXV?$Local@VFunction@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::EnqueueMicrotask(void (__cdecl*param_0)(void *), void * param_1) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(void *), void *)) GetProcAddress(v8Module, "?EnqueueMicrotask@Isolate@v8@@QAEXP6AXPAX@Z0@Z");
+  return target(this, param_0, param_1);
+}
+
+void v8::Isolate::Enter() {
+  static const auto target = (void (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?Enter@Isolate@v8@@QAEXXZ");
+  return target(this);
+}
+
+void v8::Isolate::Exit() {
+  static const auto target = (void (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?Exit@Isolate@v8@@QAEXXZ");
+  return target(this);
+}
+
+class v8::Local<class v8::Context> v8::Isolate::GetCallingContext() {
+  static const auto target = (class v8::Local<class v8::Context> (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?GetCallingContext@Isolate@v8@@QAE?AV?$Local@VContext@v8@@@2@XZ");
+  return target(this);
+}
+
+void v8::Isolate::GetCodeRange(void * * param_0, unsigned int * param_1) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void * *, unsigned int *)) GetProcAddress(v8Module, "?GetCodeRange@Isolate@v8@@QAEXPAPAXPAI@Z");
+  return target(this, param_0, param_1);
+}
+
+class v8::CpuProfiler * v8::Isolate::GetCpuProfiler() {
+  static const auto target = (class v8::CpuProfiler * (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?GetCpuProfiler@Isolate@v8@@QAEPAVCpuProfiler@2@XZ");
+  return target(this);
+}
+
+class v8::Isolate * v8::Isolate::GetCurrent() {
+  static const auto target = (class v8::Isolate * (__cdecl*)()) GetProcAddress(v8Module, "?GetCurrent@Isolate@v8@@SAPAV12@XZ");
+  return target();
+}
+
+class v8::Local<class v8::Context> v8::Isolate::GetCurrentContext() {
+  static const auto target = (class v8::Local<class v8::Context> (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?GetCurrentContext@Isolate@v8@@QAE?AV?$Local@VContext@v8@@@2@XZ");
+  return target(this);
+}
+
+class v8::Local<class v8::Context> v8::Isolate::GetEnteredContext() {
+  static const auto target = (class v8::Local<class v8::Context> (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?GetEnteredContext@Isolate@v8@@QAE?AV?$Local@VContext@v8@@@2@XZ");
+  return target(this);
+}
+
+class v8::Local<class v8::Context> v8::Isolate::GetEnteredOrMicrotaskContext() {
+  static const auto target = (class v8::Local<class v8::Context> (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?GetEnteredOrMicrotaskContext@Isolate@v8@@QAE?AV?$Local@VContext@v8@@@2@XZ");
+  return target(this);
+}
+
+bool v8::Isolate::GetHeapCodeAndMetadataStatistics(class v8::HeapCodeStatistics * param_0) {
+  static const auto target = (bool (__thiscall*)(v8::Isolate*, class v8::HeapCodeStatistics *)) GetProcAddress(v8Module, "?GetHeapCodeAndMetadataStatistics@Isolate@v8@@QAE_NPAVHeapCodeStatistics@2@@Z");
+  return target(this, param_0);
+}
+
+bool v8::Isolate::GetHeapObjectStatisticsAtLastGC(class v8::HeapObjectStatistics * param_0, unsigned int param_1) {
+  static const auto target = (bool (__thiscall*)(v8::Isolate*, class v8::HeapObjectStatistics *, unsigned int)) GetProcAddress(v8Module, "?GetHeapObjectStatisticsAtLastGC@Isolate@v8@@QAE_NPAVHeapObjectStatistics@2@I@Z");
+  return target(this, param_0, param_1);
+}
+
+class v8::HeapProfiler * v8::Isolate::GetHeapProfiler() {
+  static const auto target = (class v8::HeapProfiler * (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?GetHeapProfiler@Isolate@v8@@QAEPAVHeapProfiler@2@XZ");
+  return target(this);
+}
+
+bool v8::Isolate::GetHeapSpaceStatistics(class v8::HeapSpaceStatistics * param_0, unsigned int param_1) {
+  static const auto target = (bool (__thiscall*)(v8::Isolate*, class v8::HeapSpaceStatistics *, unsigned int)) GetProcAddress(v8Module, "?GetHeapSpaceStatistics@Isolate@v8@@QAE_NPAVHeapSpaceStatistics@2@I@Z");
+  return target(this, param_0, param_1);
+}
+
+void v8::Isolate::GetHeapStatistics(class v8::HeapStatistics * param_0) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, class v8::HeapStatistics *)) GetProcAddress(v8Module, "?GetHeapStatistics@Isolate@v8@@QAEXPAVHeapStatistics@2@@Z");
+  return target(this, param_0);
+}
+
+enum v8::MicrotasksPolicy v8::Isolate::GetMicrotasksPolicy() const {
+  static const auto target = (enum v8::MicrotasksPolicy (__thiscall*)(const v8::Isolate*)) GetProcAddress(v8Module, "?GetMicrotasksPolicy@Isolate@v8@@QBE?AW4MicrotasksPolicy@2@XZ");
+  return target(this);
+}
+
+void v8::Isolate::GetStackSample(struct v8::RegisterState const & param_0, void * * param_1, unsigned int param_2, struct v8::SampleInfo * param_3) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, struct v8::RegisterState const &, void * *, unsigned int, struct v8::SampleInfo *)) GetProcAddress(v8Module, "?GetStackSample@Isolate@v8@@QAEXABURegisterState@2@PAPAXIPAUSampleInfo@2@@Z");
+  return target(this, param_0, param_1, param_2, param_3);
+}
+
+bool v8::Isolate::IdleNotification(int param_0) {
+  static const auto target = (bool (__thiscall*)(v8::Isolate*, int)) GetProcAddress(v8Module, "?IdleNotification@Isolate@v8@@QAE_NH@Z");
+  return target(this, param_0);
+}
+
+bool v8::Isolate::IdleNotificationDeadline(double param_0) {
+  static const auto target = (bool (__thiscall*)(v8::Isolate*, double)) GetProcAddress(v8Module, "?IdleNotificationDeadline@Isolate@v8@@QAE_NN@Z");
+  return target(this, param_0);
+}
+
+bool v8::Isolate::InContext() {
+  static const auto target = (bool (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?InContext@Isolate@v8@@QAE_NXZ");
+  return target(this);
+}
+
+void v8::Isolate::IncreaseHeapLimitForDebugging() {
+  static const auto target = (void (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?IncreaseHeapLimitForDebugging@Isolate@v8@@QAEXXZ");
+  return target(this);
+}
+
+bool v8::Isolate::IsDead() {
+  static const auto target = (bool (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?IsDead@Isolate@v8@@QAE_NXZ");
+  return target(this);
+}
+
+bool v8::Isolate::IsExecutionTerminating() {
+  static const auto target = (bool (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?IsExecutionTerminating@Isolate@v8@@QAE_NXZ");
+  return target(this);
+}
+
+bool v8::Isolate::IsHeapLimitIncreasedForDebugging() {
+  static const auto target = (bool (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?IsHeapLimitIncreasedForDebugging@Isolate@v8@@QAE_NXZ");
+  return target(this);
+}
+
+bool v8::Isolate::IsInUse() {
+  static const auto target = (bool (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?IsInUse@Isolate@v8@@QAE_NXZ");
+  return target(this);
+}
+
+void v8::Isolate::IsolateInBackgroundNotification() {
+  static const auto target = (void (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?IsolateInBackgroundNotification@Isolate@v8@@QAEXXZ");
+  return target(this);
+}
+
+void v8::Isolate::IsolateInForegroundNotification() {
+  static const auto target = (void (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?IsolateInForegroundNotification@Isolate@v8@@QAEXXZ");
+  return target(this);
+}
+
+void v8::Isolate::LowMemoryNotification() {
+  static const auto target = (void (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?LowMemoryNotification@Isolate@v8@@QAEXXZ");
+  return target(this);
+}
+
+void v8::Isolate::MemoryPressureNotification(enum v8::MemoryPressureLevel param_0) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, enum v8::MemoryPressureLevel)) GetProcAddress(v8Module, "?MemoryPressureNotification@Isolate@v8@@QAEXW4MemoryPressureLevel@2@@Z");
+  return target(this, param_0);
+}
+
+class v8::Isolate * v8::Isolate::New(struct v8::Isolate::CreateParams const & param_0) {
+  static const auto target = (class v8::Isolate * (__cdecl*)(struct v8::Isolate::CreateParams const &)) GetProcAddress(v8Module, "?New@Isolate@v8@@SAPAV12@ABUCreateParams@12@@Z");
+  return target(param_0);
+}
+
+unsigned int v8::Isolate::NumberOfHeapSpaces() {
+  static const auto target = (unsigned int (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?NumberOfHeapSpaces@Isolate@v8@@QAEIXZ");
+  return target(this);
+}
+
+unsigned int v8::Isolate::NumberOfPhantomHandleResetsSinceLastCall() {
+  static const auto target = (unsigned int (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?NumberOfPhantomHandleResetsSinceLastCall@Isolate@v8@@QAEIXZ");
+  return target(this);
+}
+
+unsigned int v8::Isolate::NumberOfTrackedHeapObjectTypes() {
+  static const auto target = (unsigned int (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?NumberOfTrackedHeapObjectTypes@Isolate@v8@@QAEIXZ");
+  return target(this);
+}
+
+void v8::Isolate::RemoveBeforeCallEnteredCallback(void (__cdecl*param_0)(class v8::Isolate *)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(class v8::Isolate *))) GetProcAddress(v8Module, "?RemoveBeforeCallEnteredCallback@Isolate@v8@@QAEXP6AXPAV12@@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::RemoveCallCompletedCallback(void (__cdecl*param_0)(class v8::Isolate *)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(class v8::Isolate *))) GetProcAddress(v8Module, "?RemoveCallCompletedCallback@Isolate@v8@@QAEXP6AXPAV12@@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::RemoveCallCompletedCallback(void (__cdecl*param_0)(void)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(void))) GetProcAddress(v8Module, "?RemoveCallCompletedCallback@Isolate@v8@@QAEXP6AXXZ@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::RemoveGCEpilogueCallback(void (__cdecl*param_0)(class v8::Isolate *,enum v8::GCType,enum v8::GCCallbackFlags)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(class v8::Isolate *,enum v8::GCType,enum v8::GCCallbackFlags))) GetProcAddress(v8Module, "?RemoveGCEpilogueCallback@Isolate@v8@@QAEXP6AXPAV12@W4GCType@2@W4GCCallbackFlags@2@@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::RemoveGCPrologueCallback(void (__cdecl*param_0)(class v8::Isolate *,enum v8::GCType,enum v8::GCCallbackFlags)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(class v8::Isolate *,enum v8::GCType,enum v8::GCCallbackFlags))) GetProcAddress(v8Module, "?RemoveGCPrologueCallback@Isolate@v8@@QAEXP6AXPAV12@W4GCType@2@W4GCCallbackFlags@2@@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::RemoveMessageListeners(void (__cdecl*param_0)(class v8::Local<class v8::Message>,class v8::Local<class v8::Value>)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(class v8::Local<class v8::Message>,class v8::Local<class v8::Value>))) GetProcAddress(v8Module, "?RemoveMessageListeners@Isolate@v8@@QAEXP6AXV?$Local@VMessage@v8@@@2@V?$Local@VValue@v8@@@2@@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::RemoveMicrotasksCompletedCallback(void (__cdecl*param_0)(class v8::Isolate *)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(class v8::Isolate *))) GetProcAddress(v8Module, "?RemoveMicrotasksCompletedCallback@Isolate@v8@@QAEXP6AXPAV12@@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::ReportExternalAllocationLimitReached() {
+  static const auto target = (void (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?ReportExternalAllocationLimitReached@Isolate@v8@@AAEXXZ");
+  return target(this);
+}
+
+void v8::Isolate::RequestGarbageCollectionForTesting(enum v8::Isolate::GarbageCollectionType param_0) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, enum v8::Isolate::GarbageCollectionType)) GetProcAddress(v8Module, "?RequestGarbageCollectionForTesting@Isolate@v8@@QAEXW4GarbageCollectionType@12@@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::RequestInterrupt(void (__cdecl*param_0)(class v8::Isolate *,void *), void * param_1) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(class v8::Isolate *,void *), void *)) GetProcAddress(v8Module, "?RequestInterrupt@Isolate@v8@@QAEXP6AXPAV12@PAX@Z1@Z");
+  return target(this, param_0, param_1);
+}
+
+void v8::Isolate::RestoreOriginalHeapLimit() {
+  static const auto target = (void (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?RestoreOriginalHeapLimit@Isolate@v8@@QAEXXZ");
+  return target(this);
+}
+
+void v8::Isolate::RunMicrotasks() {
+  static const auto target = (void (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?RunMicrotasks@Isolate@v8@@QAEXXZ");
+  return target(this);
+}
+
+void v8::Isolate::SetAbortOnUncaughtExceptionCallback(bool (__cdecl*param_0)(class v8::Isolate *)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, bool (__cdecl*)(class v8::Isolate *))) GetProcAddress(v8Module, "?SetAbortOnUncaughtExceptionCallback@Isolate@v8@@QAEXP6A_NPAV12@@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::SetAddHistogramSampleFunction(void (__cdecl*param_0)(void *,int)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(void *,int))) GetProcAddress(v8Module, "?SetAddHistogramSampleFunction@Isolate@v8@@QAEXP6AXPAXH@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::SetAllowAtomicsWait(bool param_0) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, bool)) GetProcAddress(v8Module, "?SetAllowAtomicsWait@Isolate@v8@@QAEX_N@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::SetAllowCodeGenerationFromStringsCallback(bool (__cdecl*param_0)(class v8::Local<class v8::Context>)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, bool (__cdecl*)(class v8::Local<class v8::Context>))) GetProcAddress(v8Module, "?SetAllowCodeGenerationFromStringsCallback@Isolate@v8@@QAEXP6A_NV?$Local@VContext@v8@@@2@@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::SetAutorunMicrotasks(bool param_0) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, bool)) GetProcAddress(v8Module, "?SetAutorunMicrotasks@Isolate@v8@@QAEX_N@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::SetCaptureStackTraceForUncaughtExceptions(bool param_0, int param_1, enum v8::StackTrace::StackTraceOptions param_2) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, bool, int, enum v8::StackTrace::StackTraceOptions)) GetProcAddress(v8Module, "?SetCaptureStackTraceForUncaughtExceptions@Isolate@v8@@QAEX_NHW4StackTraceOptions@StackTrace@2@@Z");
+  return target(this, param_0, param_1, param_2);
+}
+
+void v8::Isolate::SetCounterFunction(int * (__cdecl*param_0)(char const *)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, int * (__cdecl*)(char const *))) GetProcAddress(v8Module, "?SetCounterFunction@Isolate@v8@@QAEXP6APAHPBD@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::SetCreateHistogramFunction(void * (__cdecl*param_0)(char const *,int,int,unsigned int)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void * (__cdecl*)(char const *,int,int,unsigned int))) GetProcAddress(v8Module, "?SetCreateHistogramFunction@Isolate@v8@@QAEXP6APAXPBDHHI@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::SetEmbedderHeapTracer(class v8::EmbedderHeapTracer * param_0) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, class v8::EmbedderHeapTracer *)) GetProcAddress(v8Module, "?SetEmbedderHeapTracer@Isolate@v8@@QAEXPAVEmbedderHeapTracer@2@@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::SetEventLogger(void (__cdecl*param_0)(char const *,int)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(char const *,int))) GetProcAddress(v8Module, "?SetEventLogger@Isolate@v8@@QAEXP6AXPBDH@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::SetFailedAccessCheckCallbackFunction(void (__cdecl*param_0)(class v8::Local<class v8::Object>,enum v8::AccessType,class v8::Local<class v8::Value>)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(class v8::Local<class v8::Object>,enum v8::AccessType,class v8::Local<class v8::Value>))) GetProcAddress(v8Module, "?SetFailedAccessCheckCallbackFunction@Isolate@v8@@QAEXP6AXV?$Local@VObject@v8@@@2@W4AccessType@2@V?$Local@VValue@v8@@@2@@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::SetFatalErrorHandler(void (__cdecl*param_0)(char const *,char const *)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(char const *,char const *))) GetProcAddress(v8Module, "?SetFatalErrorHandler@Isolate@v8@@QAEXP6AXPBD0@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::SetJitCodeEventHandler(enum v8::JitCodeEventOptions param_0, void (__cdecl*param_1)(struct v8::JitCodeEvent const *)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, enum v8::JitCodeEventOptions, void (__cdecl*)(struct v8::JitCodeEvent const *))) GetProcAddress(v8Module, "?SetJitCodeEventHandler@Isolate@v8@@QAEXW4JitCodeEventOptions@2@P6AXPBUJitCodeEvent@2@@Z@Z");
+  return target(this, param_0, param_1);
+}
+
+void v8::Isolate::SetMicrotasksPolicy(enum v8::MicrotasksPolicy param_0) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, enum v8::MicrotasksPolicy)) GetProcAddress(v8Module, "?SetMicrotasksPolicy@Isolate@v8@@QAEXW4MicrotasksPolicy@2@@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::SetOOMErrorHandler(void (__cdecl*param_0)(char const *,bool)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(char const *,bool))) GetProcAddress(v8Module, "?SetOOMErrorHandler@Isolate@v8@@QAEXP6AXPBD_N@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::SetPromiseHook(void (__cdecl*param_0)(enum v8::PromiseHookType,class v8::Local<class v8::Promise>,class v8::Local<class v8::Value>)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(enum v8::PromiseHookType,class v8::Local<class v8::Promise>,class v8::Local<class v8::Value>))) GetProcAddress(v8Module, "?SetPromiseHook@Isolate@v8@@QAEXP6AXW4PromiseHookType@2@V?$Local@VPromise@v8@@@2@V?$Local@VValue@v8@@@2@@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::SetPromiseRejectCallback(void (__cdecl*param_0)(class v8::PromiseRejectMessage)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(class v8::PromiseRejectMessage))) GetProcAddress(v8Module, "?SetPromiseRejectCallback@Isolate@v8@@QAEXP6AXVPromiseRejectMessage@2@@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::SetRAILMode(enum v8::RAILMode param_0) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, enum v8::RAILMode)) GetProcAddress(v8Module, "?SetRAILMode@Isolate@v8@@QAEXW4RAILMode@2@@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::SetStackLimit(unsigned int param_0) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, unsigned int)) GetProcAddress(v8Module, "?SetStackLimit@Isolate@v8@@QAEXI@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::SetUseCounterCallback(void (__cdecl*param_0)(class v8::Isolate *,enum v8::Isolate::UseCounterFeature)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, void (__cdecl*)(class v8::Isolate *,enum v8::Isolate::UseCounterFeature))) GetProcAddress(v8Module, "?SetUseCounterCallback@Isolate@v8@@QAEXP6AXPAV12@W4UseCounterFeature@12@@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::SetWasmCompileCallback(bool (__cdecl*param_0)(class v8::FunctionCallbackInfo<class v8::Value> const &)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, bool (__cdecl*)(class v8::FunctionCallbackInfo<class v8::Value> const &))) GetProcAddress(v8Module, "?SetWasmCompileCallback@Isolate@v8@@QAEXP6A_NABV?$FunctionCallbackInfo@VValue@v8@@@2@@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::SetWasmInstanceCallback(bool (__cdecl*param_0)(class v8::FunctionCallbackInfo<class v8::Value> const &)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, bool (__cdecl*)(class v8::FunctionCallbackInfo<class v8::Value> const &))) GetProcAddress(v8Module, "?SetWasmInstanceCallback@Isolate@v8@@QAEXP6A_NABV?$FunctionCallbackInfo@VValue@v8@@@2@@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::SetWasmInstantiateCallback(bool (__cdecl*param_0)(class v8::FunctionCallbackInfo<class v8::Value> const &)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, bool (__cdecl*)(class v8::FunctionCallbackInfo<class v8::Value> const &))) GetProcAddress(v8Module, "?SetWasmInstantiateCallback@Isolate@v8@@QAEXP6A_NABV?$FunctionCallbackInfo@VValue@v8@@@2@@Z@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::SetWasmModuleCallback(bool (__cdecl*param_0)(class v8::FunctionCallbackInfo<class v8::Value> const &)) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, bool (__cdecl*)(class v8::FunctionCallbackInfo<class v8::Value> const &))) GetProcAddress(v8Module, "?SetWasmModuleCallback@Isolate@v8@@QAEXP6A_NABV?$FunctionCallbackInfo@VValue@v8@@@2@@Z@Z");
+  return target(this, param_0);
+}
+
+v8::Isolate::SuppressMicrotaskExecutionScope::~SuppressMicrotaskExecutionScope() {
+  static const auto target = (void (__thiscall*)(v8::Isolate::SuppressMicrotaskExecutionScope*)) GetProcAddress(v8Module, "??1SuppressMicrotaskExecutionScope@Isolate@v8@@QAE@XZ");
+  target(this);
+}
+
+void v8::Isolate::TerminateExecution() {
+  static const auto target = (void (__thiscall*)(v8::Isolate*)) GetProcAddress(v8Module, "?TerminateExecution@Isolate@v8@@QAEXXZ");
+  return target(this);
+}
+
+class v8::Local<class v8::Value> v8::Isolate::ThrowException(class v8::Local<class v8::Value> param_0) {
+  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Isolate*, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?ThrowException@Isolate@v8@@QAE?AV?$Local@VValue@v8@@@2@V32@@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::VisitExternalResources(class v8::ExternalResourceVisitor * param_0) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, class v8::ExternalResourceVisitor *)) GetProcAddress(v8Module, "?VisitExternalResources@Isolate@v8@@QAEXPAVExternalResourceVisitor@2@@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::VisitHandlesForPartialDependence(class v8::PersistentHandleVisitor * param_0) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, class v8::PersistentHandleVisitor *)) GetProcAddress(v8Module, "?VisitHandlesForPartialDependence@Isolate@v8@@QAEXPAVPersistentHandleVisitor@2@@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::VisitHandlesWithClassIds(class v8::PersistentHandleVisitor * param_0) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, class v8::PersistentHandleVisitor *)) GetProcAddress(v8Module, "?VisitHandlesWithClassIds@Isolate@v8@@QAEXPAVPersistentHandleVisitor@2@@Z");
+  return target(this, param_0);
+}
+
+void v8::Isolate::VisitWeakHandles(class v8::PersistentHandleVisitor * param_0) {
+  static const auto target = (void (__thiscall*)(v8::Isolate*, class v8::PersistentHandleVisitor *)) GetProcAddress(v8Module, "?VisitWeakHandles@Isolate@v8@@QAEXPAVPersistentHandleVisitor@2@@Z");
+  return target(this, param_0);
+}
+
+bool v8::Isolate::WillAutorunMicrotasks() const {
+  static const auto target = (bool (__thiscall*)(const v8::Isolate*)) GetProcAddress(v8Module, "?WillAutorunMicrotasks@Isolate@v8@@QBE_NXZ");
+  return target(this);
+}
+
+void v8::Locker::Initialize(class v8::Isolate * param_0) {
+  static const auto target = (void (__thiscall*)(v8::Locker*, class v8::Isolate *)) GetProcAddress(v8Module, "?Initialize@Locker@v8@@AAEXPAVIsolate@2@@Z");
+  return target(this, param_0);
+}
+
+bool v8::Locker::IsActive() {
+  static const auto target = (bool (__cdecl*)()) GetProcAddress(v8Module, "?IsActive@Locker@v8@@SA_NXZ");
+  return target();
+}
+
+bool v8::Locker::IsLocked(class v8::Isolate * param_0) {
+  static const auto target = (bool (__cdecl*)(class v8::Isolate *)) GetProcAddress(v8Module, "?IsLocked@Locker@v8@@SA_NPAVIsolate@2@@Z");
+  return target(param_0);
+}
+
+v8::Locker::~Locker() {
+  static const auto target = (void (__thiscall*)(v8::Locker*)) GetProcAddress(v8Module, "??1Locker@v8@@QAE@XZ");
+  target(this);
+}
+
+int v8::Message::ErrorLevel() const {
+  static const auto target = (int (__thiscall*)(const v8::Message*)) GetProcAddress(v8Module, "?ErrorLevel@Message@v8@@QBEHXZ");
+  return target(this);
+}
+
+class v8::Local<class v8::String> v8::Message::Get() const {
+  static const auto target = (class v8::Local<class v8::String> (__thiscall*)(const v8::Message*)) GetProcAddress(v8Module, "?Get@Message@v8@@QBE?AV?$Local@VString@v8@@@2@XZ");
+  return target(this);
+}
+
+int v8::Message::GetEndColumn() const {
+  static const auto target = (int (__thiscall*)(const v8::Message*)) GetProcAddress(v8Module, "?GetEndColumn@Message@v8@@QBEHXZ");
+  return target(this);
+}
+
+class v8::Maybe<int> v8::Message::GetEndColumn(class v8::Local<class v8::Context> param_0) const {
+  static const auto target = (class v8::Maybe<int> (__thiscall*)(const v8::Message*, class v8::Local<class v8::Context>)) GetProcAddress(v8Module, "?GetEndColumn@Message@v8@@QBE?AV?$Maybe@H@2@V?$Local@VContext@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+int v8::Message::GetEndPosition() const {
+  static const auto target = (int (__thiscall*)(const v8::Message*)) GetProcAddress(v8Module, "?GetEndPosition@Message@v8@@QBEHXZ");
+  return target(this);
+}
+
+class v8::Maybe<int> v8::Message::GetLineNumber(class v8::Local<class v8::Context> param_0) const {
+  static const auto target = (class v8::Maybe<int> (__thiscall*)(const v8::Message*, class v8::Local<class v8::Context>)) GetProcAddress(v8Module, "?GetLineNumber@Message@v8@@QBE?AV?$Maybe@H@2@V?$Local@VContext@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+int v8::Message::GetLineNumber() const {
+  static const auto target = (int (__thiscall*)(const v8::Message*)) GetProcAddress(v8Module, "?GetLineNumber@Message@v8@@QBEHXZ");
+  return target(this);
+}
+
+class v8::ScriptOrigin v8::Message::GetScriptOrigin() const {
+  static const auto target = (class v8::ScriptOrigin (__thiscall*)(const v8::Message*)) GetProcAddress(v8Module, "?GetScriptOrigin@Message@v8@@QBE?AVScriptOrigin@2@XZ");
+  return target(this);
+}
+
+class v8::Local<class v8::Value> v8::Message::GetScriptResourceName() const {
+  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(const v8::Message*)) GetProcAddress(v8Module, "?GetScriptResourceName@Message@v8@@QBE?AV?$Local@VValue@v8@@@2@XZ");
+  return target(this);
+}
+
+class v8::Local<class v8::String> v8::Message::GetSourceLine() const {
+  static const auto target = (class v8::Local<class v8::String> (__thiscall*)(const v8::Message*)) GetProcAddress(v8Module, "?GetSourceLine@Message@v8@@QBE?AV?$Local@VString@v8@@@2@XZ");
+  return target(this);
+}
+
+class v8::MaybeLocal<class v8::String> v8::Message::GetSourceLine(class v8::Local<class v8::Context> param_0) const {
+  static const auto target = (class v8::MaybeLocal<class v8::String> (__thiscall*)(const v8::Message*, class v8::Local<class v8::Context>)) GetProcAddress(v8Module, "?GetSourceLine@Message@v8@@QBE?AV?$MaybeLocal@VString@v8@@@2@V?$Local@VContext@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+class v8::Local<class v8::StackTrace> v8::Message::GetStackTrace() const {
+  static const auto target = (class v8::Local<class v8::StackTrace> (__thiscall*)(const v8::Message*)) GetProcAddress(v8Module, "?GetStackTrace@Message@v8@@QBE?AV?$Local@VStackTrace@v8@@@2@XZ");
+  return target(this);
+}
+
+class v8::Maybe<int> v8::Message::GetStartColumn(class v8::Local<class v8::Context> param_0) const {
+  static const auto target = (class v8::Maybe<int> (__thiscall*)(const v8::Message*, class v8::Local<class v8::Context>)) GetProcAddress(v8Module, "?GetStartColumn@Message@v8@@QBE?AV?$Maybe@H@2@V?$Local@VContext@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+int v8::Message::GetStartColumn() const {
+  static const auto target = (int (__thiscall*)(const v8::Message*)) GetProcAddress(v8Module, "?GetStartColumn@Message@v8@@QBEHXZ");
+  return target(this);
+}
+
+int v8::Message::GetStartPosition() const {
+  static const auto target = (int (__thiscall*)(const v8::Message*)) GetProcAddress(v8Module, "?GetStartPosition@Message@v8@@QBEHXZ");
+  return target(this);
+}
+
+bool v8::Message::IsOpaque() const {
+  static const auto target = (bool (__thiscall*)(const v8::Message*)) GetProcAddress(v8Module, "?IsOpaque@Message@v8@@QBE_NXZ");
+  return target(this);
+}
+
+bool v8::Message::IsSharedCrossOrigin() const {
+  static const auto target = (bool (__thiscall*)(const v8::Message*)) GetProcAddress(v8Module, "?IsSharedCrossOrigin@Message@v8@@QBE_NXZ");
+  return target(this);
+}
+
+void v8::Message::PrintCurrentStackTrace(class v8::Isolate * param_0, struct _iobuf * param_1) {
+  static const auto target = (void (__cdecl*)(class v8::Isolate *, struct _iobuf *)) GetProcAddress(v8Module, "?PrintCurrentStackTrace@Message@v8@@SAXPAVIsolate@2@PAU_iobuf@@@Z");
+  return target(param_0, param_1);
+}
+
+class v8::MaybeLocal<class v8::Value> v8::Object::CallAsConstructor(class v8::Local<class v8::Context> param_0, int param_1, class v8::Local<class v8::Value> * const param_2) {
+  static const auto target = (class v8::MaybeLocal<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, int, class v8::Local<class v8::Value> * const)) GetProcAddress(v8Module, "?CallAsConstructor@Object@v8@@QAE?AV?$MaybeLocal@VValue@v8@@@2@V?$Local@VContext@v8@@@2@HQAV?$Local@VValue@v8@@@2@@Z");
+  return target(this, param_0, param_1, param_2);
+}
+
+class v8::Local<class v8::Value> v8::Object::CallAsConstructor(int param_0, class v8::Local<class v8::Value> * const param_1) {
+  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Object*, int, class v8::Local<class v8::Value> * const)) GetProcAddress(v8Module, "?CallAsConstructor@Object@v8@@QAE?AV?$Local@VValue@v8@@@2@HQAV32@@Z");
+  return target(this, param_0, param_1);
+}
+
+class v8::MaybeLocal<class v8::Value> v8::Object::CallAsFunction(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Value> param_1, int param_2, class v8::Local<class v8::Value> * const param_3) {
+  static const auto target = (class v8::MaybeLocal<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Value>, int, class v8::Local<class v8::Value> * const)) GetProcAddress(v8Module, "?CallAsFunction@Object@v8@@QAE?AV?$MaybeLocal@VValue@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VValue@v8@@@2@HQAV52@@Z");
+  return target(this, param_0, param_1, param_2, param_3);
+}
+
+class v8::Local<class v8::Value> v8::Object::CallAsFunction(class v8::Local<class v8::Value> param_0, int param_1, class v8::Local<class v8::Value> * const param_2) {
+  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::Value>, int, class v8::Local<class v8::Value> * const)) GetProcAddress(v8Module, "?CallAsFunction@Object@v8@@QAE?AV?$Local@VValue@v8@@@2@V32@HQAV32@@Z");
+  return target(this, param_0, param_1, param_2);
+}
+
+void v8::Object::CheckCast(class v8::Value * param_0) {
+  static const auto target = (void (__cdecl*)(class v8::Value *)) GetProcAddress(v8Module, "?CheckCast@Object@v8@@CAXPAVValue@2@@Z");
+  return target(param_0);
+}
+
+class v8::Local<class v8::Object> v8::Object::Clone() {
+  static const auto target = (class v8::Local<class v8::Object> (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?Clone@Object@v8@@QAE?AV?$Local@VObject@v8@@@2@XZ");
+  return target(this);
+}
+
+class v8::Maybe<bool> v8::Object::CreateDataProperty(class v8::Local<class v8::Context> param_0, unsigned int param_1, class v8::Local<class v8::Value> param_2) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, unsigned int, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?CreateDataProperty@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@IV?$Local@VValue@v8@@@2@@Z");
+  return target(this, param_0, param_1, param_2);
+}
+
+class v8::Maybe<bool> v8::Object::CreateDataProperty(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1, class v8::Local<class v8::Value> param_2) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?CreateDataProperty@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@V?$Local@VValue@v8@@@2@@Z");
+  return target(this, param_0, param_1, param_2);
+}
+
+class v8::Local<class v8::Context> v8::Object::CreationContext() {
+  static const auto target = (class v8::Local<class v8::Context> (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?CreationContext@Object@v8@@QAE?AV?$Local@VContext@v8@@@2@XZ");
+  return target(this);
+}
+
+class v8::Maybe<bool> v8::Object::DefineOwnProperty(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1, class v8::Local<class v8::Value> param_2, enum v8::PropertyAttribute param_3) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>, class v8::Local<class v8::Value>, enum v8::PropertyAttribute)) GetProcAddress(v8Module, "?DefineOwnProperty@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@V?$Local@VValue@v8@@@2@W4PropertyAttribute@2@@Z");
+  return target(this, param_0, param_1, param_2, param_3);
+}
+
+class v8::Maybe<bool> v8::Object::DefineProperty(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1, class v8::PropertyDescriptor & param_2) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>, class v8::PropertyDescriptor &)) GetProcAddress(v8Module, "?DefineProperty@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@AAVPropertyDescriptor@2@@Z");
+  return target(this, param_0, param_1, param_2);
+}
+
+class v8::Maybe<bool> v8::Object::Delete(class v8::Local<class v8::Context> param_0, unsigned int param_1) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, unsigned int)) GetProcAddress(v8Module, "?Delete@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@I@Z");
+  return target(this, param_0, param_1);
+}
+
+class v8::Maybe<bool> v8::Object::Delete(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Value> param_1) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?Delete@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VValue@v8@@@2@@Z");
+  return target(this, param_0, param_1);
+}
+
+bool v8::Object::Delete(unsigned int param_0) {
+  static const auto target = (bool (__thiscall*)(v8::Object*, unsigned int)) GetProcAddress(v8Module, "?Delete@Object@v8@@QAE_NI@Z");
+  return target(this, param_0);
+}
+
+bool v8::Object::Delete(class v8::Local<class v8::Value> param_0) {
+  static const auto target = (bool (__thiscall*)(v8::Object*, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?Delete@Object@v8@@QAE_NV?$Local@VValue@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+class v8::Maybe<bool> v8::Object::DeletePrivate(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Private> param_1) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Private>)) GetProcAddress(v8Module, "?DeletePrivate@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VPrivate@v8@@@2@@Z");
+  return target(this, param_0, param_1);
+}
+
+class v8::Local<class v8::Object> v8::Object::FindInstanceInPrototypeChain(class v8::Local<class v8::FunctionTemplate> param_0) {
+  static const auto target = (class v8::Local<class v8::Object> (__thiscall*)(v8::Object*, class v8::Local<class v8::FunctionTemplate>)) GetProcAddress(v8Module, "?FindInstanceInPrototypeChain@Object@v8@@QAE?AV?$Local@VObject@v8@@@2@V?$Local@VFunctionTemplate@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+class v8::Maybe<bool> v8::Object::ForceSet(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Value> param_1, class v8::Local<class v8::Value> param_2, enum v8::PropertyAttribute param_3) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Value>, class v8::Local<class v8::Value>, enum v8::PropertyAttribute)) GetProcAddress(v8Module, "?ForceSet@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VValue@v8@@@2@1W4PropertyAttribute@2@@Z");
+  return target(this, param_0, param_1, param_2, param_3);
+}
+
+bool v8::Object::ForceSet(class v8::Local<class v8::Value> param_0, class v8::Local<class v8::Value> param_1, enum v8::PropertyAttribute param_2) {
+  static const auto target = (bool (__thiscall*)(v8::Object*, class v8::Local<class v8::Value>, class v8::Local<class v8::Value>, enum v8::PropertyAttribute)) GetProcAddress(v8Module, "?ForceSet@Object@v8@@QAE_NV?$Local@VValue@v8@@@2@0W4PropertyAttribute@2@@Z");
+  return target(this, param_0, param_1, param_2);
+}
+
+class v8::MaybeLocal<class v8::Value> v8::Object::Get(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Value> param_1) {
+  static const auto target = (class v8::MaybeLocal<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?Get@Object@v8@@QAE?AV?$MaybeLocal@VValue@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VValue@v8@@@2@@Z");
+  return target(this, param_0, param_1);
+}
+
+class v8::Local<class v8::Value> v8::Object::Get(class v8::Local<class v8::Value> param_0) {
+  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?Get@Object@v8@@QAE?AV?$Local@VValue@v8@@@2@V32@@Z");
+  return target(this, param_0);
+}
+
+class v8::MaybeLocal<class v8::Value> v8::Object::Get(class v8::Local<class v8::Context> param_0, unsigned int param_1) {
+  static const auto target = (class v8::MaybeLocal<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, unsigned int)) GetProcAddress(v8Module, "?Get@Object@v8@@QAE?AV?$MaybeLocal@VValue@v8@@@2@V?$Local@VContext@v8@@@2@I@Z");
+  return target(this, param_0, param_1);
+}
+
+class v8::Local<class v8::Value> v8::Object::Get(unsigned int param_0) {
+  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Object*, unsigned int)) GetProcAddress(v8Module, "?Get@Object@v8@@QAE?AV?$Local@VValue@v8@@@2@I@Z");
+  return target(this, param_0);
+}
+
+class v8::Local<class v8::String> v8::Object::GetConstructorName() {
+  static const auto target = (class v8::Local<class v8::String> (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?GetConstructorName@Object@v8@@QAE?AV?$Local@VString@v8@@@2@XZ");
+  return target(this);
+}
+
+int v8::Object::GetIdentityHash() {
+  static const auto target = (int (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?GetIdentityHash@Object@v8@@QAEHXZ");
+  return target(this);
+}
+
+class v8::Isolate * v8::Object::GetIsolate() {
+  static const auto target = (class v8::Isolate * (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?GetIsolate@Object@v8@@QAEPAVIsolate@2@XZ");
+  return target(this);
+}
+
+class v8::Local<class v8::Value> v8::Object::GetOwnPropertyDescriptor(class v8::Local<class v8::Name> param_0) {
+  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::Name>)) GetProcAddress(v8Module, "?GetOwnPropertyDescriptor@Object@v8@@QAE?AV?$Local@VValue@v8@@@2@V?$Local@VName@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+class v8::MaybeLocal<class v8::Value> v8::Object::GetOwnPropertyDescriptor(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1) {
+  static const auto target = (class v8::MaybeLocal<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>)) GetProcAddress(v8Module, "?GetOwnPropertyDescriptor@Object@v8@@QAE?AV?$MaybeLocal@VValue@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@@Z");
+  return target(this, param_0, param_1);
+}
+
+class v8::Local<class v8::Array> v8::Object::GetOwnPropertyNames() {
+  static const auto target = (class v8::Local<class v8::Array> (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?GetOwnPropertyNames@Object@v8@@QAE?AV?$Local@VArray@v8@@@2@XZ");
+  return target(this);
+}
+
+class v8::MaybeLocal<class v8::Array> v8::Object::GetOwnPropertyNames(class v8::Local<class v8::Context> param_0) {
+  static const auto target = (class v8::MaybeLocal<class v8::Array> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>)) GetProcAddress(v8Module, "?GetOwnPropertyNames@Object@v8@@QAE?AV?$MaybeLocal@VArray@v8@@@2@V?$Local@VContext@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+class v8::MaybeLocal<class v8::Array> v8::Object::GetOwnPropertyNames(class v8::Local<class v8::Context> param_0, enum v8::PropertyFilter param_1) {
+  static const auto target = (class v8::MaybeLocal<class v8::Array> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, enum v8::PropertyFilter)) GetProcAddress(v8Module, "?GetOwnPropertyNames@Object@v8@@QAE?AV?$MaybeLocal@VArray@v8@@@2@V?$Local@VContext@v8@@@2@W4PropertyFilter@2@@Z");
+  return target(this, param_0, param_1);
+}
+
+class v8::MaybeLocal<class v8::Value> v8::Object::GetPrivate(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Private> param_1) {
+  static const auto target = (class v8::MaybeLocal<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Private>)) GetProcAddress(v8Module, "?GetPrivate@Object@v8@@QAE?AV?$MaybeLocal@VValue@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VPrivate@v8@@@2@@Z");
+  return target(this, param_0, param_1);
+}
+
+class v8::Maybe<enum v8::PropertyAttribute> v8::Object::GetPropertyAttributes(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Value> param_1) {
+  static const auto target = (class v8::Maybe<enum v8::PropertyAttribute> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?GetPropertyAttributes@Object@v8@@QAE?AV?$Maybe@W4PropertyAttribute@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VValue@v8@@@2@@Z");
+  return target(this, param_0, param_1);
+}
+
+enum v8::PropertyAttribute v8::Object::GetPropertyAttributes(class v8::Local<class v8::Value> param_0) {
+  static const auto target = (enum v8::PropertyAttribute (__thiscall*)(v8::Object*, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?GetPropertyAttributes@Object@v8@@QAE?AW4PropertyAttribute@2@V?$Local@VValue@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+class v8::Local<class v8::Array> v8::Object::GetPropertyNames() {
+  static const auto target = (class v8::Local<class v8::Array> (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?GetPropertyNames@Object@v8@@QAE?AV?$Local@VArray@v8@@@2@XZ");
+  return target(this);
+}
+
+class v8::MaybeLocal<class v8::Array> v8::Object::GetPropertyNames(class v8::Local<class v8::Context> param_0, enum v8::KeyCollectionMode param_1, enum v8::PropertyFilter param_2, enum v8::IndexFilter param_3) {
+  static const auto target = (class v8::MaybeLocal<class v8::Array> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, enum v8::KeyCollectionMode, enum v8::PropertyFilter, enum v8::IndexFilter)) GetProcAddress(v8Module, "?GetPropertyNames@Object@v8@@QAE?AV?$MaybeLocal@VArray@v8@@@2@V?$Local@VContext@v8@@@2@W4KeyCollectionMode@2@W4PropertyFilter@2@W4IndexFilter@2@@Z");
+  return target(this, param_0, param_1, param_2, param_3);
+}
+
+class v8::MaybeLocal<class v8::Array> v8::Object::GetPropertyNames(class v8::Local<class v8::Context> param_0) {
+  static const auto target = (class v8::MaybeLocal<class v8::Array> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>)) GetProcAddress(v8Module, "?GetPropertyNames@Object@v8@@QAE?AV?$MaybeLocal@VArray@v8@@@2@V?$Local@VContext@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+class v8::Local<class v8::Value> v8::Object::GetPrototype() {
+  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?GetPrototype@Object@v8@@QAE?AV?$Local@VValue@v8@@@2@XZ");
+  return target(this);
+}
+
+class v8::Local<class v8::Value> v8::Object::GetRealNamedProperty(class v8::Local<class v8::String> param_0) {
+  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::String>)) GetProcAddress(v8Module, "?GetRealNamedProperty@Object@v8@@QAE?AV?$Local@VValue@v8@@@2@V?$Local@VString@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+class v8::MaybeLocal<class v8::Value> v8::Object::GetRealNamedProperty(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1) {
+  static const auto target = (class v8::MaybeLocal<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>)) GetProcAddress(v8Module, "?GetRealNamedProperty@Object@v8@@QAE?AV?$MaybeLocal@VValue@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@@Z");
+  return target(this, param_0, param_1);
+}
+
+class v8::Maybe<enum v8::PropertyAttribute> v8::Object::GetRealNamedPropertyAttributes(class v8::Local<class v8::String> param_0) {
+  static const auto target = (class v8::Maybe<enum v8::PropertyAttribute> (__thiscall*)(v8::Object*, class v8::Local<class v8::String>)) GetProcAddress(v8Module, "?GetRealNamedPropertyAttributes@Object@v8@@QAE?AV?$Maybe@W4PropertyAttribute@v8@@@2@V?$Local@VString@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+class v8::Maybe<enum v8::PropertyAttribute> v8::Object::GetRealNamedPropertyAttributes(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1) {
+  static const auto target = (class v8::Maybe<enum v8::PropertyAttribute> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>)) GetProcAddress(v8Module, "?GetRealNamedPropertyAttributes@Object@v8@@QAE?AV?$Maybe@W4PropertyAttribute@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@@Z");
+  return target(this, param_0, param_1);
+}
+
+class v8::Maybe<enum v8::PropertyAttribute> v8::Object::GetRealNamedPropertyAttributesInPrototypeChain(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1) {
+  static const auto target = (class v8::Maybe<enum v8::PropertyAttribute> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>)) GetProcAddress(v8Module, "?GetRealNamedPropertyAttributesInPrototypeChain@Object@v8@@QAE?AV?$Maybe@W4PropertyAttribute@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@@Z");
+  return target(this, param_0, param_1);
+}
+
+class v8::Maybe<enum v8::PropertyAttribute> v8::Object::GetRealNamedPropertyAttributesInPrototypeChain(class v8::Local<class v8::String> param_0) {
+  static const auto target = (class v8::Maybe<enum v8::PropertyAttribute> (__thiscall*)(v8::Object*, class v8::Local<class v8::String>)) GetProcAddress(v8Module, "?GetRealNamedPropertyAttributesInPrototypeChain@Object@v8@@QAE?AV?$Maybe@W4PropertyAttribute@v8@@@2@V?$Local@VString@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+class v8::MaybeLocal<class v8::Value> v8::Object::GetRealNamedPropertyInPrototypeChain(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1) {
+  static const auto target = (class v8::MaybeLocal<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>)) GetProcAddress(v8Module, "?GetRealNamedPropertyInPrototypeChain@Object@v8@@QAE?AV?$MaybeLocal@VValue@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@@Z");
+  return target(this, param_0, param_1);
+}
+
+class v8::Local<class v8::Value> v8::Object::GetRealNamedPropertyInPrototypeChain(class v8::Local<class v8::String> param_0) {
+  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Object*, class v8::Local<class v8::String>)) GetProcAddress(v8Module, "?GetRealNamedPropertyInPrototypeChain@Object@v8@@QAE?AV?$Local@VValue@v8@@@2@V?$Local@VString@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+bool v8::Object::Has(class v8::Local<class v8::Value> param_0) {
+  static const auto target = (bool (__thiscall*)(v8::Object*, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?Has@Object@v8@@QAE_NV?$Local@VValue@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+class v8::Maybe<bool> v8::Object::Has(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Value> param_1) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?Has@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VValue@v8@@@2@@Z");
+  return target(this, param_0, param_1);
+}
+
+class v8::Maybe<bool> v8::Object::Has(class v8::Local<class v8::Context> param_0, unsigned int param_1) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, unsigned int)) GetProcAddress(v8Module, "?Has@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@I@Z");
+  return target(this, param_0, param_1);
+}
+
+bool v8::Object::Has(unsigned int param_0) {
+  static const auto target = (bool (__thiscall*)(v8::Object*, unsigned int)) GetProcAddress(v8Module, "?Has@Object@v8@@QAE_NI@Z");
+  return target(this, param_0);
+}
+
+bool v8::Object::HasIndexedLookupInterceptor() {
+  static const auto target = (bool (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?HasIndexedLookupInterceptor@Object@v8@@QAE_NXZ");
+  return target(this);
+}
+
+bool v8::Object::HasNamedLookupInterceptor() {
+  static const auto target = (bool (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?HasNamedLookupInterceptor@Object@v8@@QAE_NXZ");
+  return target(this);
+}
+
+bool v8::Object::HasOwnProperty(class v8::Local<class v8::String> param_0) {
+  static const auto target = (bool (__thiscall*)(v8::Object*, class v8::Local<class v8::String>)) GetProcAddress(v8Module, "?HasOwnProperty@Object@v8@@QAE_NV?$Local@VString@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+class v8::Maybe<bool> v8::Object::HasOwnProperty(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>)) GetProcAddress(v8Module, "?HasOwnProperty@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@@Z");
+  return target(this, param_0, param_1);
+}
+
+class v8::Maybe<bool> v8::Object::HasOwnProperty(class v8::Local<class v8::Context> param_0, unsigned int param_1) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, unsigned int)) GetProcAddress(v8Module, "?HasOwnProperty@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@I@Z");
+  return target(this, param_0, param_1);
+}
+
+class v8::Maybe<bool> v8::Object::HasPrivate(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Private> param_1) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Private>)) GetProcAddress(v8Module, "?HasPrivate@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VPrivate@v8@@@2@@Z");
+  return target(this, param_0, param_1);
+}
+
+class v8::Maybe<bool> v8::Object::HasRealIndexedProperty(class v8::Local<class v8::Context> param_0, unsigned int param_1) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, unsigned int)) GetProcAddress(v8Module, "?HasRealIndexedProperty@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@I@Z");
+  return target(this, param_0, param_1);
+}
+
+bool v8::Object::HasRealIndexedProperty(unsigned int param_0) {
+  static const auto target = (bool (__thiscall*)(v8::Object*, unsigned int)) GetProcAddress(v8Module, "?HasRealIndexedProperty@Object@v8@@QAE_NI@Z");
+  return target(this, param_0);
+}
+
+class v8::Maybe<bool> v8::Object::HasRealNamedCallbackProperty(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>)) GetProcAddress(v8Module, "?HasRealNamedCallbackProperty@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@@Z");
+  return target(this, param_0, param_1);
+}
+
+bool v8::Object::HasRealNamedCallbackProperty(class v8::Local<class v8::String> param_0) {
+  static const auto target = (bool (__thiscall*)(v8::Object*, class v8::Local<class v8::String>)) GetProcAddress(v8Module, "?HasRealNamedCallbackProperty@Object@v8@@QAE_NV?$Local@VString@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+class v8::Maybe<bool> v8::Object::HasRealNamedProperty(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>)) GetProcAddress(v8Module, "?HasRealNamedProperty@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@@Z");
+  return target(this, param_0, param_1);
+}
+
+bool v8::Object::HasRealNamedProperty(class v8::Local<class v8::String> param_0) {
+  static const auto target = (bool (__thiscall*)(v8::Object*, class v8::Local<class v8::String>)) GetProcAddress(v8Module, "?HasRealNamedProperty@Object@v8@@QAE_NV?$Local@VString@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+int v8::Object::InternalFieldCount() {
+  static const auto target = (int (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?InternalFieldCount@Object@v8@@QAEHXZ");
+  return target(this);
+}
+
+bool v8::Object::IsCallable() {
+  static const auto target = (bool (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?IsCallable@Object@v8@@QAE_NXZ");
+  return target(this);
+}
+
+bool v8::Object::IsConstructor() {
+  static const auto target = (bool (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?IsConstructor@Object@v8@@QAE_NXZ");
+  return target(this);
+}
+
+class v8::Local<class v8::Object> v8::Object::New(class v8::Isolate * param_0) {
+  static const auto target = (class v8::Local<class v8::Object> (__cdecl*)(class v8::Isolate *)) GetProcAddress(v8Module, "?New@Object@v8@@SA?AV?$Local@VObject@v8@@@2@PAVIsolate@2@@Z");
+  return target(param_0);
+}
+
+class v8::Local<class v8::String> v8::Object::ObjectProtoToString() {
+  static const auto target = (class v8::Local<class v8::String> (__thiscall*)(v8::Object*)) GetProcAddress(v8Module, "?ObjectProtoToString@Object@v8@@QAE?AV?$Local@VString@v8@@@2@XZ");
+  return target(this);
+}
+
+class v8::MaybeLocal<class v8::String> v8::Object::ObjectProtoToString(class v8::Local<class v8::Context> param_0) {
+  static const auto target = (class v8::MaybeLocal<class v8::String> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>)) GetProcAddress(v8Module, "?ObjectProtoToString@Object@v8@@QAE?AV?$MaybeLocal@VString@v8@@@2@V?$Local@VContext@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+bool v8::Object::Set(class v8::Local<class v8::Value> param_0, class v8::Local<class v8::Value> param_1) {
+  static const auto target = (bool (__thiscall*)(v8::Object*, class v8::Local<class v8::Value>, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?Set@Object@v8@@QAE_NV?$Local@VValue@v8@@@2@0@Z");
+  return target(this, param_0, param_1);
+}
+
+class v8::Maybe<bool> v8::Object::Set(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Value> param_1, class v8::Local<class v8::Value> param_2) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Value>, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?Set@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VValue@v8@@@2@1@Z");
+  return target(this, param_0, param_1, param_2);
+}
+
+class v8::Maybe<bool> v8::Object::Set(class v8::Local<class v8::Context> param_0, unsigned int param_1, class v8::Local<class v8::Value> param_2) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, unsigned int, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?Set@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@IV?$Local@VValue@v8@@@2@@Z");
+  return target(this, param_0, param_1, param_2);
+}
+
+bool v8::Object::Set(unsigned int param_0, class v8::Local<class v8::Value> param_1) {
+  static const auto target = (bool (__thiscall*)(v8::Object*, unsigned int, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?Set@Object@v8@@QAE_NIV?$Local@VValue@v8@@@2@@Z");
+  return target(this, param_0, param_1);
+}
+
+bool v8::Object::SetAccessor(class v8::Local<class v8::String> param_0, void (__cdecl*param_1)(class v8::Local<class v8::String>,class v8::PropertyCallbackInfo<class v8::Value> const &), void (__cdecl*param_2)(class v8::Local<class v8::String>,class v8::Local<class v8::Value>,class v8::PropertyCallbackInfo<void> const &), class v8::Local<class v8::Value> param_3, enum v8::AccessControl param_4, enum v8::PropertyAttribute param_5) {
+  static const auto target = (bool (__thiscall*)(v8::Object*, class v8::Local<class v8::String>, void (__cdecl*)(class v8::Local<class v8::String>,class v8::PropertyCallbackInfo<class v8::Value> const &), void (__cdecl*)(class v8::Local<class v8::String>,class v8::Local<class v8::Value>,class v8::PropertyCallbackInfo<void> const &), class v8::Local<class v8::Value>, enum v8::AccessControl, enum v8::PropertyAttribute)) GetProcAddress(v8Module, "?SetAccessor@Object@v8@@QAE_NV?$Local@VString@v8@@@2@P6AX0ABV?$PropertyCallbackInfo@VValue@v8@@@2@@ZP6AX0V?$Local@VValue@v8@@@2@ABV?$PropertyCallbackInfo@X@2@@Z3W4AccessControl@2@W4PropertyAttribute@2@@Z");
+  return target(this, param_0, param_1, param_2, param_3, param_4, param_5);
+}
+
+class v8::Maybe<bool> v8::Object::SetAccessor(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1, void (__cdecl*param_2)(class v8::Local<class v8::Name>,class v8::PropertyCallbackInfo<class v8::Value> const &), void (__cdecl*param_3)(class v8::Local<class v8::Name>,class v8::Local<class v8::Value>,class v8::PropertyCallbackInfo<void> const &), class v8::MaybeLocal<class v8::Value> param_4, enum v8::AccessControl param_5, enum v8::PropertyAttribute param_6) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>, void (__cdecl*)(class v8::Local<class v8::Name>,class v8::PropertyCallbackInfo<class v8::Value> const &), void (__cdecl*)(class v8::Local<class v8::Name>,class v8::Local<class v8::Value>,class v8::PropertyCallbackInfo<void> const &), class v8::MaybeLocal<class v8::Value>, enum v8::AccessControl, enum v8::PropertyAttribute)) GetProcAddress(v8Module, "?SetAccessor@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@P6AX1ABV?$PropertyCallbackInfo@VValue@v8@@@2@@ZP6AX1V?$Local@VValue@v8@@@2@ABV?$PropertyCallbackInfo@X@2@@ZV?$MaybeLocal@VValue@v8@@@2@W4AccessControl@2@W4PropertyAttribute@2@@Z");
+  return target(this, param_0, param_1, param_2, param_3, param_4, param_5, param_6);
+}
+
+bool v8::Object::SetAccessor(class v8::Local<class v8::Name> param_0, void (__cdecl*param_1)(class v8::Local<class v8::Name>,class v8::PropertyCallbackInfo<class v8::Value> const &), void (__cdecl*param_2)(class v8::Local<class v8::Name>,class v8::Local<class v8::Value>,class v8::PropertyCallbackInfo<void> const &), class v8::Local<class v8::Value> param_3, enum v8::AccessControl param_4, enum v8::PropertyAttribute param_5) {
+  static const auto target = (bool (__thiscall*)(v8::Object*, class v8::Local<class v8::Name>, void (__cdecl*)(class v8::Local<class v8::Name>,class v8::PropertyCallbackInfo<class v8::Value> const &), void (__cdecl*)(class v8::Local<class v8::Name>,class v8::Local<class v8::Value>,class v8::PropertyCallbackInfo<void> const &), class v8::Local<class v8::Value>, enum v8::AccessControl, enum v8::PropertyAttribute)) GetProcAddress(v8Module, "?SetAccessor@Object@v8@@QAE_NV?$Local@VName@v8@@@2@P6AX0ABV?$PropertyCallbackInfo@VValue@v8@@@2@@ZP6AX0V?$Local@VValue@v8@@@2@ABV?$PropertyCallbackInfo@X@2@@Z3W4AccessControl@2@W4PropertyAttribute@2@@Z");
+  return target(this, param_0, param_1, param_2, param_3, param_4, param_5);
+}
+
+void v8::Object::SetAccessorProperty(class v8::Local<class v8::Name> param_0, class v8::Local<class v8::Function> param_1, class v8::Local<class v8::Function> param_2, enum v8::PropertyAttribute param_3, enum v8::AccessControl param_4) {
+  static const auto target = (void (__thiscall*)(v8::Object*, class v8::Local<class v8::Name>, class v8::Local<class v8::Function>, class v8::Local<class v8::Function>, enum v8::PropertyAttribute, enum v8::AccessControl)) GetProcAddress(v8Module, "?SetAccessorProperty@Object@v8@@QAEXV?$Local@VName@v8@@@2@V?$Local@VFunction@v8@@@2@1W4PropertyAttribute@2@W4AccessControl@2@@Z");
+  return target(this, param_0, param_1, param_2, param_3, param_4);
+}
+
+void v8::Object::SetAlignedPointerInInternalField(int param_0, void * param_1) {
+  static const auto target = (void (__thiscall*)(v8::Object*, int, void *)) GetProcAddress(v8Module, "?SetAlignedPointerInInternalField@Object@v8@@QAEXHPAX@Z");
+  return target(this, param_0, param_1);
+}
+
+void v8::Object::SetAlignedPointerInInternalFields(int param_0, int * const param_1, void * * const param_2) {
+  static const auto target = (void (__thiscall*)(v8::Object*, int, int * const, void * * const)) GetProcAddress(v8Module, "?SetAlignedPointerInInternalFields@Object@v8@@QAEXHQAHQAPAX@Z");
+  return target(this, param_0, param_1, param_2);
+}
+
+class v8::Maybe<bool> v8::Object::SetIntegrityLevel(class v8::Local<class v8::Context> param_0, enum v8::IntegrityLevel param_1) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, enum v8::IntegrityLevel)) GetProcAddress(v8Module, "?SetIntegrityLevel@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@W4IntegrityLevel@2@@Z");
+  return target(this, param_0, param_1);
+}
+
+void v8::Object::SetInternalField(int param_0, class v8::Local<class v8::Value> param_1) {
+  static const auto target = (void (__thiscall*)(v8::Object*, int, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?SetInternalField@Object@v8@@QAEXHV?$Local@VValue@v8@@@2@@Z");
+  return target(this, param_0, param_1);
+}
+
+class v8::Maybe<bool> v8::Object::SetNativeDataProperty(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Name> param_1, void (__cdecl*param_2)(class v8::Local<class v8::Name>,class v8::PropertyCallbackInfo<class v8::Value> const &), void (__cdecl*param_3)(class v8::Local<class v8::Name>,class v8::Local<class v8::Value>,class v8::PropertyCallbackInfo<void> const &), class v8::Local<class v8::Value> param_4, enum v8::PropertyAttribute param_5) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Name>, void (__cdecl*)(class v8::Local<class v8::Name>,class v8::PropertyCallbackInfo<class v8::Value> const &), void (__cdecl*)(class v8::Local<class v8::Name>,class v8::Local<class v8::Value>,class v8::PropertyCallbackInfo<void> const &), class v8::Local<class v8::Value>, enum v8::PropertyAttribute)) GetProcAddress(v8Module, "?SetNativeDataProperty@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VName@v8@@@2@P6AX1ABV?$PropertyCallbackInfo@VValue@v8@@@2@@ZP6AX1V?$Local@VValue@v8@@@2@ABV?$PropertyCallbackInfo@X@2@@Z4W4PropertyAttribute@2@@Z");
+  return target(this, param_0, param_1, param_2, param_3, param_4, param_5);
+}
+
+class v8::Maybe<bool> v8::Object::SetPrivate(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Private> param_1, class v8::Local<class v8::Value> param_2) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Private>, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?SetPrivate@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VPrivate@v8@@@2@V?$Local@VValue@v8@@@2@@Z");
+  return target(this, param_0, param_1, param_2);
+}
+
+class v8::Maybe<bool> v8::Object::SetPrototype(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::Value> param_1) {
+  static const auto target = (class v8::Maybe<bool> (__thiscall*)(v8::Object*, class v8::Local<class v8::Context>, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?SetPrototype@Object@v8@@QAE?AV?$Maybe@_N@2@V?$Local@VContext@v8@@@2@V?$Local@VValue@v8@@@2@@Z");
+  return target(this, param_0, param_1);
+}
+
+bool v8::Object::SetPrototype(class v8::Local<class v8::Value> param_0) {
+  static const auto target = (bool (__thiscall*)(v8::Object*, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "?SetPrototype@Object@v8@@QAE_NV?$Local@VValue@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+void * v8::Object::SlowGetAlignedPointerFromInternalField(int param_0) {
+  static const auto target = (void * (__thiscall*)(v8::Object*, int)) GetProcAddress(v8Module, "?SlowGetAlignedPointerFromInternalField@Object@v8@@AAEPAXH@Z");
+  return target(this, param_0);
+}
+
+class v8::Local<class v8::Value> v8::Object::SlowGetInternalField(int param_0) {
+  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::Object*, int)) GetProcAddress(v8Module, "?SlowGetInternalField@Object@v8@@AAE?AV?$Local@VValue@v8@@@2@H@Z");
+  return target(this, param_0);
+}
+
+class v8::Local<class v8::Script> v8::Script::Compile(class v8::Local<class v8::String> param_0, class v8::ScriptOrigin * param_1) {
+  static const auto target = (class v8::Local<class v8::Script> (__cdecl*)(class v8::Local<class v8::String>, class v8::ScriptOrigin *)) GetProcAddress(v8Module, "?Compile@Script@v8@@SA?AV?$Local@VScript@v8@@@2@V?$Local@VString@v8@@@2@PAVScriptOrigin@2@@Z");
+  return target(param_0, param_1);
+}
+
+class v8::MaybeLocal<class v8::Script> v8::Script::Compile(class v8::Local<class v8::Context> param_0, class v8::Local<class v8::String> param_1, class v8::ScriptOrigin * param_2) {
+  static const auto target = (class v8::MaybeLocal<class v8::Script> (__cdecl*)(class v8::Local<class v8::Context>, class v8::Local<class v8::String>, class v8::ScriptOrigin *)) GetProcAddress(v8Module, "?Compile@Script@v8@@SA?AV?$MaybeLocal@VScript@v8@@@2@V?$Local@VContext@v8@@@2@V?$Local@VString@v8@@@2@PAVScriptOrigin@2@@Z");
+  return target(param_0, param_1, param_2);
+}
+
+class v8::Local<class v8::Script> v8::Script::Compile(class v8::Local<class v8::String> param_0, class v8::Local<class v8::String> param_1) {
+  static const auto target = (class v8::Local<class v8::Script> (__cdecl*)(class v8::Local<class v8::String>, class v8::Local<class v8::String>)) GetProcAddress(v8Module, "?Compile@Script@v8@@SA?AV?$Local@VScript@v8@@@2@V?$Local@VString@v8@@@2@0@Z");
+  return target(param_0, param_1);
+}
+
+class v8::Local<class v8::UnboundScript> v8::Script::GetUnboundScript() {
+  static const auto target = (class v8::Local<class v8::UnboundScript> (__thiscall*)(v8::Script*)) GetProcAddress(v8Module, "?GetUnboundScript@Script@v8@@QAE?AV?$Local@VUnboundScript@v8@@@2@XZ");
+  return target(this);
+}
+
+class v8::MaybeLocal<class v8::Value> v8::Script::Run(class v8::Local<class v8::Context> param_0) {
+  static const auto target = (class v8::MaybeLocal<class v8::Value> (__thiscall*)(v8::Script*, class v8::Local<class v8::Context>)) GetProcAddress(v8Module, "?Run@Script@v8@@QAE?AV?$MaybeLocal@VValue@v8@@@2@V?$Local@VContext@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+int v8::StackFrame::GetColumn() const {
+  static const auto target = (int (__thiscall*)(const v8::StackFrame*)) GetProcAddress(v8Module, "?GetColumn@StackFrame@v8@@QBEHXZ");
+  return target(this);
+}
+
+class v8::Local<class v8::String> v8::StackFrame::GetFunctionName() const {
+  static const auto target = (class v8::Local<class v8::String> (__thiscall*)(const v8::StackFrame*)) GetProcAddress(v8Module, "?GetFunctionName@StackFrame@v8@@QBE?AV?$Local@VString@v8@@@2@XZ");
+  return target(this);
+}
+
+int v8::StackFrame::GetLineNumber() const {
+  static const auto target = (int (__thiscall*)(const v8::StackFrame*)) GetProcAddress(v8Module, "?GetLineNumber@StackFrame@v8@@QBEHXZ");
+  return target(this);
+}
+
+int v8::StackFrame::GetScriptId() const {
+  static const auto target = (int (__thiscall*)(const v8::StackFrame*)) GetProcAddress(v8Module, "?GetScriptId@StackFrame@v8@@QBEHXZ");
+  return target(this);
+}
+
+class v8::Local<class v8::String> v8::StackFrame::GetScriptName() const {
+  static const auto target = (class v8::Local<class v8::String> (__thiscall*)(const v8::StackFrame*)) GetProcAddress(v8Module, "?GetScriptName@StackFrame@v8@@QBE?AV?$Local@VString@v8@@@2@XZ");
+  return target(this);
+}
+
+class v8::Local<class v8::String> v8::StackFrame::GetScriptNameOrSourceURL() const {
+  static const auto target = (class v8::Local<class v8::String> (__thiscall*)(const v8::StackFrame*)) GetProcAddress(v8Module, "?GetScriptNameOrSourceURL@StackFrame@v8@@QBE?AV?$Local@VString@v8@@@2@XZ");
+  return target(this);
+}
+
+bool v8::StackFrame::IsConstructor() const {
+  static const auto target = (bool (__thiscall*)(const v8::StackFrame*)) GetProcAddress(v8Module, "?IsConstructor@StackFrame@v8@@QBE_NXZ");
+  return target(this);
+}
+
+bool v8::StackFrame::IsEval() const {
+  static const auto target = (bool (__thiscall*)(const v8::StackFrame*)) GetProcAddress(v8Module, "?IsEval@StackFrame@v8@@QBE_NXZ");
+  return target(this);
+}
+
+bool v8::StackFrame::IsWasm() const {
+  static const auto target = (bool (__thiscall*)(const v8::StackFrame*)) GetProcAddress(v8Module, "?IsWasm@StackFrame@v8@@QBE_NXZ");
+  return target(this);
+}
+
+class v8::Local<class v8::Array> v8::StackTrace::AsArray() {
+  static const auto target = (class v8::Local<class v8::Array> (__thiscall*)(v8::StackTrace*)) GetProcAddress(v8Module, "?AsArray@StackTrace@v8@@QAE?AV?$Local@VArray@v8@@@2@XZ");
+  return target(this);
+}
+
+class v8::Local<class v8::StackTrace> v8::StackTrace::CurrentStackTrace(class v8::Isolate * param_0, int param_1, enum v8::StackTrace::StackTraceOptions param_2) {
+  static const auto target = (class v8::Local<class v8::StackTrace> (__cdecl*)(class v8::Isolate *, int, enum v8::StackTrace::StackTraceOptions)) GetProcAddress(v8Module, "?CurrentStackTrace@StackTrace@v8@@SA?AV?$Local@VStackTrace@v8@@@2@PAVIsolate@2@HW4StackTraceOptions@12@@Z");
+  return target(param_0, param_1, param_2);
+}
+
+class v8::Local<class v8::StackFrame> v8::StackTrace::GetFrame(unsigned int param_0) const {
+  static const auto target = (class v8::Local<class v8::StackFrame> (__thiscall*)(const v8::StackTrace*, unsigned int)) GetProcAddress(v8Module, "?GetFrame@StackTrace@v8@@QBE?AV?$Local@VStackFrame@v8@@@2@I@Z");
+  return target(this, param_0);
+}
+
+int v8::StackTrace::GetFrameCount() const {
+  static const auto target = (int (__thiscall*)(const v8::StackTrace*)) GetProcAddress(v8Module, "?GetFrameCount@StackTrace@v8@@QBEHXZ");
+  return target(this);
+}
+
+class v8::MaybeLocal<class v8::String> v8::String::NewFromUtf8(class v8::Isolate * param_0, char const * param_1, enum v8::NewStringType param_2, int param_3) {
+  static const auto target = (class v8::MaybeLocal<class v8::String> (__cdecl*)(class v8::Isolate *, char const *, enum v8::NewStringType, int)) GetProcAddress(v8Module, "?NewFromUtf8@String@v8@@SA?AV?$MaybeLocal@VString@v8@@@2@PAVIsolate@2@PBDW4NewStringType@2@H@Z");
+  return target(param_0, param_1, param_2, param_3);
+}
+
+class v8::Local<class v8::String> v8::String::NewFromUtf8(class v8::Isolate * param_0, char const * param_1, enum v8::String::NewStringType param_2, int param_3) {
+  static const auto target = (class v8::Local<class v8::String> (__cdecl*)(class v8::Isolate *, char const *, enum v8::String::NewStringType, int)) GetProcAddress(v8Module, "?NewFromUtf8@String@v8@@SA?AV?$Local@VString@v8@@@2@PAVIsolate@2@PBDW4NewStringType@12@H@Z");
+  return target(param_0, param_1, param_2, param_3);
+}
+
+v8::String::Utf8Value::Utf8Value(class v8::Local<class v8::Value> param_0) {
+  static const auto target = (void (__thiscall*)(v8::String::Utf8Value*, class v8::Local<class v8::Value>)) GetProcAddress(v8Module, "??0Utf8Value@String@v8@@QAE@V?$Local@VValue@v8@@@2@@Z");
+  target(this, param_0);
+}
+
+v8::String::Utf8Value::~Utf8Value() {
+  static const auto target = (void (__thiscall*)(v8::String::Utf8Value*)) GetProcAddress(v8Module, "??1Utf8Value@String@v8@@QAE@XZ");
+  target(this);
+}
+
+bool v8::TryCatch::CanContinue() const {
+  static const auto target = (bool (__thiscall*)(const v8::TryCatch*)) GetProcAddress(v8Module, "?CanContinue@TryCatch@v8@@QBE_NXZ");
+  return target(this);
+}
+
+class v8::Local<class v8::Value> v8::TryCatch::Exception() const {
+  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(const v8::TryCatch*)) GetProcAddress(v8Module, "?Exception@TryCatch@v8@@QBE?AV?$Local@VValue@v8@@@2@XZ");
+  return target(this);
+}
+
+bool v8::TryCatch::HasCaught() const {
+  static const auto target = (bool (__thiscall*)(const v8::TryCatch*)) GetProcAddress(v8Module, "?HasCaught@TryCatch@v8@@QBE_NXZ");
+  return target(this);
+}
+
+bool v8::TryCatch::HasTerminated() const {
+  static const auto target = (bool (__thiscall*)(const v8::TryCatch*)) GetProcAddress(v8Module, "?HasTerminated@TryCatch@v8@@QBE_NXZ");
+  return target(this);
+}
+
+bool v8::TryCatch::IsVerbose() const {
+  static const auto target = (bool (__thiscall*)(const v8::TryCatch*)) GetProcAddress(v8Module, "?IsVerbose@TryCatch@v8@@QBE_NXZ");
+  return target(this);
+}
+
+class v8::Local<class v8::Message> v8::TryCatch::Message() const {
+  static const auto target = (class v8::Local<class v8::Message> (__thiscall*)(const v8::TryCatch*)) GetProcAddress(v8Module, "?Message@TryCatch@v8@@QBE?AV?$Local@VMessage@v8@@@2@XZ");
+  return target(this);
+}
+
+class v8::Local<class v8::Value> v8::TryCatch::ReThrow() {
+  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(v8::TryCatch*)) GetProcAddress(v8Module, "?ReThrow@TryCatch@v8@@QAE?AV?$Local@VValue@v8@@@2@XZ");
+  return target(this);
+}
+
+void v8::TryCatch::Reset() {
+  static const auto target = (void (__thiscall*)(v8::TryCatch*)) GetProcAddress(v8Module, "?Reset@TryCatch@v8@@QAEXXZ");
+  return target(this);
+}
+
+void v8::TryCatch::ResetInternal() {
+  static const auto target = (void (__thiscall*)(v8::TryCatch*)) GetProcAddress(v8Module, "?ResetInternal@TryCatch@v8@@AAEXXZ");
+  return target(this);
+}
+
+void v8::TryCatch::SetCaptureMessage(bool param_0) {
+  static const auto target = (void (__thiscall*)(v8::TryCatch*, bool)) GetProcAddress(v8Module, "?SetCaptureMessage@TryCatch@v8@@QAEX_N@Z");
+  return target(this, param_0);
+}
+
+void v8::TryCatch::SetVerbose(bool param_0) {
+  static const auto target = (void (__thiscall*)(v8::TryCatch*, bool)) GetProcAddress(v8Module, "?SetVerbose@TryCatch@v8@@QAEX_N@Z");
+  return target(this, param_0);
+}
+
+class v8::Local<class v8::Value> v8::TryCatch::StackTrace() const {
+  static const auto target = (class v8::Local<class v8::Value> (__thiscall*)(const v8::TryCatch*)) GetProcAddress(v8Module, "?StackTrace@TryCatch@v8@@QBE?AV?$Local@VValue@v8@@@2@XZ");
+  return target(this);
+}
+
+class v8::MaybeLocal<class v8::Value> v8::TryCatch::StackTrace(class v8::Local<class v8::Context> param_0) const {
+  static const auto target = (class v8::MaybeLocal<class v8::Value> (__thiscall*)(const v8::TryCatch*, class v8::Local<class v8::Context>)) GetProcAddress(v8Module, "?StackTrace@TryCatch@v8@@QBE?AV?$MaybeLocal@VValue@v8@@@2@V?$Local@VContext@v8@@@2@@Z");
+  return target(this, param_0);
+}
+
+v8::TryCatch::TryCatch() {
+  static const auto target = (void (__thiscall*)(v8::TryCatch*)) GetProcAddress(v8Module, "??0TryCatch@v8@@QAE@XZ");
+  target(this);
+}
+
+v8::TryCatch::TryCatch(class v8::Isolate * param_0) {
+  static const auto target = (void (__thiscall*)(v8::TryCatch*, class v8::Isolate *)) GetProcAddress(v8Module, "??0TryCatch@v8@@QAE@PAVIsolate@1@@Z");
+  target(this, param_0);
+}
+
+void v8::TryCatch::operator delete(void * param_0, unsigned int param_1) {
+  static const auto target = (void (__cdecl*)(void *, unsigned int)) GetProcAddress(v8Module, "??3TryCatch@v8@@SAXPAXI@Z");
+  return target(param_0, param_1);
+}
+
+void * v8::TryCatch::operator new(unsigned int param_0) {
+  static const auto target = (void * (__cdecl*)(unsigned int)) GetProcAddress(v8Module, "??2TryCatch@v8@@SAPAXI@Z");
+  return target(param_0);
+}
+
+v8::TryCatch::~TryCatch() {
+  static const auto target = (void (__thiscall*)(v8::TryCatch*)) GetProcAddress(v8Module, "??1TryCatch@v8@@QAE@XZ");
+  target(this);
+}
+
+void v8::V8::DisposeGlobal(class v8::internal::Object * * param_0) {
+  static const auto target = (void (__cdecl*)(class v8::internal::Object * *)) GetProcAddress(v8Module, "?DisposeGlobal@V8@v8@@CAXPAPAVObject@internal@2@@Z");
+  return target(param_0);
+}
+
+class v8::internal::Object * * v8::V8::GlobalizeReference(class v8::internal::Isolate * param_0, class v8::internal::Object * * param_1) {
+  static const auto target = (class v8::internal::Object * * (__cdecl*)(class v8::internal::Isolate *, class v8::internal::Object * *)) GetProcAddress(v8Module, "?GlobalizeReference@V8@v8@@CAPAPAVObject@internal@2@PAVIsolate@42@PAPAV342@@Z");
+  return target(param_0, param_1);
+}
+
+void v8::V8::ToLocalEmpty() {
+  static const auto target = (void (__cdecl*)()) GetProcAddress(v8Module, "?ToLocalEmpty@V8@v8@@CAXXZ");
+  return target();
+}

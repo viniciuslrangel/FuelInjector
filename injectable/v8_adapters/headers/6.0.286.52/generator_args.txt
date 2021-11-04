@@ -9,3 +9,10 @@
 +v8::Script::
 +v8::V8::ToLocalEmpty
 +v8::TryCatch::
++v8::V8::DisposeGlobal
++v8::V8::GlobalizeReference
++v8::Locker::
++v8::Isolate::
++v8::StackTrace::
++v8::StackFrame::
++v8::Message::
