@@ -31,7 +31,7 @@ BOOL CALLBACK EnumSymProc(
 
 void formatFunc(const FuncType &func, std::stringstream &output) {
   // language=C++
-  static std::string
+  static constexpr std::string_view
       funcTemplate = "{} {{\n  static const auto target = ({}) GetProcAddress(v8Module, \"{}\");\n  {} target({});\n}}\n\n";
 
   std::string typList;
@@ -40,7 +40,7 @@ void formatFunc(const FuncType &func, std::stringstream &output) {
 
   if (func.modifier == "__thiscall") {
     bool empty = func.args.empty();
-    if(func.isConst) {
+    if (func.isConst) {
       typList += "const ";
     }
     typList += func.className;
@@ -51,9 +51,9 @@ void formatFunc(const FuncType &func, std::stringstream &output) {
   }
 
   for (int i = 0; i < func.args.size(); i++) {
-    bool        isLast = i == func.args.size() - 1;
-    std::string name   = func.args[i];
-    std::string p      = "param_" + std::to_string(i);
+    bool isLast = i == func.args.size() - 1;
+    std::string name = func.args[i];
+    std::string p = "param_" + std::to_string(i);
 
     typList += name;
     typList += (isLast ? "" : ", ");
@@ -77,7 +77,7 @@ void formatFunc(const FuncType &func, std::stringstream &output) {
   }
 
   std::string definition = func.ret + " " + func.name + "(" + params + ")" + (func.isConst ? " const" : "");
-  std::string type       = (func.isConstructor ? "void" : func.ret) + " (" + func.modifier + "*)(" + typList + ")";
+  std::string type = (func.isConstructor ? "void" : func.ret) + " (" + func.modifier + "*)(" + typList + ")";
 
   const char *hasReturn = func.isConstructor ? "" : "return";
 
@@ -90,12 +90,12 @@ int main(int argc, char **argv) {
     return 3;
   }
 
-  std::string dll_path   = argv[1];
-  std::string baseName   = dll_path.substr(dll_path.find_last_of("/\\") + 1);
+  std::string dll_path = argv[1];
+  std::string baseName = dll_path.substr(dll_path.find_last_of("/\\") + 1);
   std::string outputPath = std::string("./") + baseName + ".cpp";
 
-  Filter   filter;
-  for (int i             = 2; i < argc; ++i) {
+  Filter filter;
+  for (int i = 2; i < argc; ++i) {
     std::string_view value(argv[i]);
     if (value.size() > 1) {
       char f1 = value[0];
@@ -148,7 +148,7 @@ int main(int argc, char **argv) {
 
   SymCleanup(hProcess);
 
-  auto optionalFilter    = [](auto &&entry) { return entry.has_value(); };
+  auto optionalFilter = [](auto &&entry) { return entry.has_value(); };
   auto transform = [&filter](auto &&PH1) { return parseFunctionName(std::forward<decltype(PH1)>(PH1), filter); };
 
   std::stringstream total;
